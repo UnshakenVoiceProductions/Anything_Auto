@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anything Automotive LLC | Rural Valley, PA</title>
+  <meta name="description" content="Anything Automotive LLC is a family-owned auto repair shop in Rural Valley, Pennsylvania offering diagnostics, maintenance, inspections, repairs, and direct customer support." />
+  <meta name="theme-color" content="#11151b" />
+  <script src="./config.js"></script>
+  <style>
+    :root{
+      --bg:#0c0f14;--panel:#171c24;--panel2:#1e2530;--text:#f5f7fa;--muted:#c8ced7;--line:rgba(255,255,255,.08);
+      --accent:#f07d00;--accent2:#ffa540;--ok:#9ae6a6;--shadow:0 24px 70px rgba(0,0,0,.28);--radius:22px;--max:1180px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#0b0d11 0%,#11161d 100%);color:var(--text);line-height:1.6}
+    a{text-decoration:none;color:inherit} .container{width:min(var(--max),calc(100% - 2rem));margin:0 auto}
+    .topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,12,16,.84);border-bottom:1px solid var(--line)}
+    .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.9rem}.logo-box{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,#fff0dd,#ffba63 55%,#d96b00);display:grid;place-items:center;box-shadow:var(--shadow);color:#2a1707;font-weight:900;font-size:1.45rem}
+    .brand strong{display:block}.brand span{display:block;color:var(--muted);font-size:.92rem}
+    .nav-links{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;color:var(--muted)}
+    .nav-links a:hover{color:#fff}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:999px;padding:.95rem 1.2rem;border:1px solid transparent;font-weight:800;cursor:pointer;transition:transform .15s ease}
+    .btn:hover{transform:translateY(-1px)} .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#201307;box-shadow:0 14px 34px rgba(240,125,0,.28)} .btn-secondary{background:rgba(255,255,255,.03);color:#fff;border-color:rgba(255,255,255,.14)}
+    .eyebrow{display:inline-flex;align-items:center;padding:.42rem .78rem;border-radius:999px;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;color:#ffd9ae;background:rgba(240,125,0,.1);border:1px solid rgba(240,125,0,.2);font-weight:800}
+    h1,h2,h3,p{margin-top:0} h1{font-size:clamp(2.35rem,5vw,4.6rem);line-height:1.02;margin-bottom:1rem;letter-spacing:-.04em} h2{font-size:clamp(1.7rem,3vw,2.7rem);line-height:1.08;margin-bottom:.8rem} h3{font-size:1.15rem;margin-bottom:.55rem} p{color:var(--muted)}
+    .hero{padding:4.7rem 0 2.2rem}.hero-grid,.grid-2,.grid-3,.grid-4,.reviews,.faq{display:grid;gap:1rem}.hero-grid{grid-template-columns:1.15fr .85fr}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-4,.reviews{grid-template-columns:repeat(4,minmax(0,1fr))}.faq{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .panel,.hero-copy,.hero-card,.review-card,.faq-item{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.25rem}
+    .hero-card{background:radial-gradient(circle at top right,rgba(240,125,0,.22),transparent 36%),linear-gradient(180deg,#171c23,#10141a)}
+    .actions,.pill-row{display:flex;flex-wrap:wrap;gap:.7rem}.actions{margin-top:1.4rem}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem;margin-top:1.5rem}.stat{padding:1rem;border-radius:18px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03)} .stat strong{display:block;color:#fff}
+    section{padding:1.2rem 0 1.95rem}.section-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+    .card-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(240,125,0,.1);border:1px solid rgba(240,125,0,.18);color:var(--accent2);margin-bottom:.75rem;font-size:1.2rem}
+    label{display:grid;gap:.35rem;color:var(--muted);font-size:.92rem} input,select,textarea{width:100%;padding:.95rem 1rem;border-radius:16px;color:#fff;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);outline:none;font:inherit} textarea{resize:vertical} input::placeholder,textarea::placeholder{color:#96a0ad}
+    .form-grid,.stack{display:grid;gap:.85rem}.form-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .hours,.list{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.75rem}.hours li,.list li{display:flex;justify-content:space-between;gap:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--line)} .hours li:last-child,.list li:last-child{border-bottom:0;padding-bottom:0}
+    .chat-log{min-height:250px;max-height:420px;overflow:auto;border-radius:18px;border:1px solid var(--line);background:rgba(0,0,0,.18);padding:1rem;display:grid;gap:.8rem}
+    .bubble{padding:.85rem 1rem;border-radius:18px;max-width:90%;border:1px solid var(--line)} .bubble.user{margin-left:auto;background:rgba(240,125,0,.12)} .bubble.ai{background:rgba(255,255,255,.05)}
+    .status{display:none;border-radius:18px;padding:.95rem 1rem;margin-top:.9rem;background:rgba(240,125,0,.08);border:1px solid rgba(240,125,0,.2);color:#ffd7b1}.status.show{display:block}
+    .stars{color:#ffcc69;letter-spacing:.08em;margin-bottom:.7rem}.review-card small{display:block;color:var(--muted);margin-top:.8rem}
+    .faq-item summary{cursor:pointer;font-weight:800}.faq-item p{margin-top:.7rem;margin-bottom:0}
+    .map{min-height:220px;border-radius:18px;border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:1rem;color:var(--muted);background:linear-gradient(rgba(16,20,26,.68),rgba(16,20,26,.78)),radial-gradient(circle at top right,rgba(240,125,0,.25),transparent 40%),#131922;margin-top:1rem}
+    footer{padding:1rem 0 2.4rem;border-top:1px solid var(--line);margin-top:1rem;background:rgba(255,255,255,.02)}
+    @media(max-width:980px){.hero-grid,.grid-4,.reviews,.faq,.grid-3{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr}}
+    @media(max-width:760px){.nav{flex-direction:column;align-items:flex-start;padding:.8rem 0}.nav-links,.grid-2,.grid-3,.grid-4,.reviews,.faq,.form-grid.two,.hero-grid{grid-template-columns:1fr;display:grid}.hero{padding-top:2.6rem}}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <div class="logo-box">AA</div>
+        <div><strong>Anything Automotive LLC</strong><span>Rural Valley, Pennsylvania</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#ask-chris">Ask Chris</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="#schedule">Request Service</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Family-Owned Auto Repair • Rural Valley, PA</div>
+          <h1>Trusted repair work with clear answers and straightforward service.</h1>
+          <p>Anything Automotive LLC is built around honest service, strong diagnostics, fair treatment, and practical repair work that helps customers stay safe and keep moving.</p>
+          <p>Whether you need routine maintenance, brake work, inspection-related service, or help tracking down a problem others could not solve, the goal is simple: helpful answers and quality work.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#schedule">Schedule Service</a>
+            <a class="btn btn-secondary" href="#ask-chris">Ask Chris</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>Diagnostics</strong><span>Practical troubleshooting for hard-to-pin-down problems.</span></div>
+            <div class="stat"><strong>Customer-First</strong><span>Straight communication and sensible next steps.</span></div>
+            <div class="stat"><strong>Local Service</strong><span>Family-owned repair support for the Rural Valley area.</span></div>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <div>
+            <div class="eyebrow">Hours & Quick Info</div>
+            <h3>Ready for everyday service and harder-to-find answers.</h3>
+            <p>Use the website for service requests, quick questions, and direct follow-up when a concern needs more personal attention.</p>
+          </div>
+          <ul class="hours">
+            <li><span>Monday</span><strong>8:00 AM – 5:00 PM</strong></li>
+            <li><span>Tuesday</span><strong>8:00 AM – 5:00 PM</strong></li>
+            <li><span>Wednesday</span><strong>8:00 AM – 5:00 PM</strong></li>
+            <li><span>Thursday</span><strong>8:00 AM – 5:00 PM</strong></li>
+            <li><span>Friday</span><strong>8:00 AM – 5:00 PM</strong></li>
+            <li><span>Saturday</span><strong>By appointment</strong></li>
+            <li><span>Sunday</span><strong>Closed</strong></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head"><div><h2>Services</h2><p>Clear, customer-facing service categories for the first public launch.</p></div></div>
+        <div class="grid-4">
+          <article class="panel"><div class="card-icon">🔍</div><h3>Diagnostics</h3><p>Warning lights, drivability issues, electrical concerns, intermittent problems, and hard-to-find faults.</p></article>
+          <article class="panel"><div class="card-icon">🛢️</div><h3>Maintenance</h3><p>Oil changes, filters, fluids, and general preventive service.</p></article>
+          <article class="panel"><div class="card-icon">🛑</div><h3>Brakes & Safety</h3><p>Brake inspections, wear concerns, noise, pulsation, and safety-focused checks.</p></article>
+          <article class="panel"><div class="card-icon">🛞</div><h3>Steering & Suspension</h3><p>Vibration, pulling, worn front-end parts, ride concerns, and handling-related repairs.</p></article>
+          <article class="panel"><div class="card-icon">🚗</div><h3>General Repair</h3><p>Everyday automotive repair work with an emphasis on reliability and doing it right.</p></article>
+          <article class="panel"><div class="card-icon">📋</div><h3>Inspection Appointments</h3><p>Inspection-related scheduling and clear communication when repairs are needed.</p></article>
+          <article class="panel"><div class="card-icon">💡</div><h3>Check Engine Light</h3><p>Testing and evaluation before parts are recommended or replaced.</p></article>
+          <article class="panel"><div class="card-icon">💬</div><h3>Ask Chris</h3><p>Start online with a first-pass answer, then send the question directly to Chris if you need more help.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ask-chris">
+      <div class="container">
+        <div class="section-head"><div><h2>Ask Chris</h2><p>Ask a question online and get a practical first-pass answer. If the issue needs direct review, you can send it straight to Chris.</p></div></div>
+        <div class="grid-2">
+          <div class="panel">
+            <div class="chat-log" id="chatLog">
+              <div class="bubble ai"><strong>Ask Chris Assistant</strong><br><br>Describe the concern in plain language. You will get a practical first-pass answer and clear next steps.</div>
+            </div>
+            <form id="askChrisForm" class="stack" style="margin-top:1rem">
+              <div class="form-grid two">
+                <label>Your name<input id="askChrisName" placeholder="Your name" /></label>
+                <label>Email or phone<input id="askChrisReply" placeholder="How the shop can reach you" /></label>
+              </div>
+              <label>Your question<textarea id="askChrisQuestion" rows="5" placeholder="Example: My truck has a vibration around 60 mph and sometimes pulls to one side. What should I have checked first?" required></textarea></label>
+              <button class="btn btn-primary" type="submit">Get an answer</button>
+            </form>
+            <div class="actions" id="responseActions" style="display:none;margin-top:1rem">
+              <button id="helpfulBtn" class="btn btn-secondary" type="button">That helped</button>
+              <button id="anotherBtn" class="btn btn-secondary" type="button">Ask another question</button>
+              <button id="escalateBtn" class="btn btn-primary" type="button">Send to Chris</button>
+            </div>
+            <div id="askChrisStatus" class="status"></div>
+          </div>
+          <div class="panel">
+            <h3>When direct follow-up makes sense</h3>
+            <ul class="list">
+              <li><span>Safety-critical issue</span><strong>Priority follow-up</strong></li>
+              <li><span>Customer wants direct contact</span><strong>Chris review</strong></li>
+              <li><span>Low-confidence answer</span><strong>Escalated</strong></li>
+              <li><span>Issue needs in-person testing</span><strong>Schedule service</strong></li>
+            </ul>
+            <div id="escalationPanel" class="status">
+              <h3>Send this to Chris</h3>
+              <form id="escalationForm" class="stack">
+                <div class="form-grid two">
+                  <label>Your name<input name="name" required /></label>
+                  <label>Best contact<input name="contact" required /></label>
+                </div>
+                <label>Question for follow-up<textarea id="escalationQuestion" rows="4" required></textarea></label>
+                <label>Additional notes<textarea name="notes" rows="3" placeholder="Anything else Chris should know before following up?"></textarea></label>
+                <button class="btn btn-primary" type="submit">Request direct follow-up</button>
+              </form>
+              <div id="escalationStatus" class="status"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="container">
+        <div class="section-head"><div><h2>Request service</h2><p>Send a service request online and the shop can confirm the best appointment window.</p></div></div>
+        <div class="grid-2">
+          <div class="panel">
+            <form id="scheduleForm" class="stack">
+              <div class="form-grid two">
+                <label>Full name<input name="name" placeholder="Your name" required></label>
+                <label>Phone number<input name="phone" placeholder="Best call-back number" required></label>
+              </div>
+              <div class="form-grid two">
+                <label>Vehicle<input name="vehicle" placeholder="Year, make, model" required></label>
+                <label>Service requested<select name="service" required><option value="">Choose a service</option><option>Diagnostics</option><option>Inspection</option><option>Brakes</option><option>Maintenance</option><option>Steering / Suspension</option><option>Other</option></select></label>
+              </div>
+              <label>Notes<textarea name="notes" rows="5" placeholder="Describe the concern, warning lights, noises, or anything the shop should know."></textarea></label>
+              <button class="btn btn-primary" type="submit">Send service request</button>
+            </form>
+            <div id="scheduleStatus" class="status"></div>
+          </div>
+          <div class="panel">
+            <h3>Helpful details to include</h3>
+            <ul class="list">
+              <li><span>When the problem happens</span><strong>Cold / warm / highway / braking</strong></li>
+              <li><span>Any warning lights</span><strong>Helpful for diagnostics</strong></li>
+              <li><span>Recent repairs or parts</span><strong>Good context</strong></li>
+              <li><span>Best contact method</span><strong>Call or email</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head"><div><h2>Customer reviews</h2><p>Share your experience and help future customers know what to expect.</p></div></div>
+        <div class="reviews">
+          <article class="review-card"><div class="stars">★★★★★</div><p>Professional, straightforward, and easy to work with. The site should feel just as dependable as the shop itself.</p><small>Preview testimonial</small></article>
+          <article class="review-card"><div class="stars">★★★★★</div><p>Ask Chris is a good way to get a helpful first answer before deciding whether a full appointment is needed.</p><small>Preview testimonial</small></article>
+          <article class="review-card"><div class="stars">★★★★★</div><p>The website is clear and easy to use, and the orange-and-black look fits the business well.</p><small>Preview testimonial</small></article>
+          <article class="review-card"><div class="stars">★★★★★</div><p>Strong diagnostics and practical communication make a real difference when a vehicle issue is hard to explain.</p><small>Preview testimonial</small></article>
+        </div>
+        <div class="grid-2" style="margin-top:1rem">
+          <div class="panel">
+            <h3>Leave a review</h3>
+            <form id="reviewForm" class="stack">
+              <div class="form-grid two">
+                <label>Your name<input name="reviewer" placeholder="Your name" required></label>
+                <label>Rating<select name="rating" required><option value="">Choose</option><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option></select></label>
+              </div>
+              <label>Review<textarea name="reviewText" rows="5" placeholder="Tell us about your experience" required></textarea></label>
+              <button class="btn btn-primary" type="submit">Submit review</button>
+            </form>
+            <div id="reviewStatus" class="status"></div>
+          </div>
+          <div class="panel">
+            <h3>What customers can expect</h3>
+            <ul class="list">
+              <li><span>Clear communication</span><strong>Always</strong></li>
+              <li><span>Honest next steps</span><strong>Always</strong></li>
+              <li><span>Direct shop follow-up</span><strong>When needed</strong></li>
+              <li><span>More customer tools</span><strong>Added over time</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head"><div><h2>Frequently asked questions</h2><p>Simple answers for common first-time customer questions.</p></div></div>
+        <div class="faq">
+          <details class="faq-item" open><summary>Can I ask a question before I schedule?</summary><p>Yes. Start with Ask Chris. If you still need direct help, the question can be sent for personal follow-up.</p></details>
+          <details class="faq-item"><summary>Do I need to know exactly what is wrong with my vehicle?</summary><p>No. Plain-language descriptions are enough. Include the symptoms, when they happen, and any warning lights or noises.</p></details>
+          <details class="faq-item"><summary>Can I request an inspection appointment online?</summary><p>Yes. Use the service request form and include any concerns that may affect inspection or repair planning.</p></details>
+          <details class="faq-item"><summary>Will more customer tools be added later?</summary><p>Yes. The launch version stays clear and straightforward while leaving room for future customer features.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container grid-2">
+        <div class="panel">
+          <h2>Contact Anything Automotive</h2>
+          <ul class="list">
+            <li><span>Address</span><strong>201 Cowanshannock Ave, Rural Valley, PA 16249</strong></li>
+            <li><span>Phone</span><strong>(724) 783-2008</strong></li>
+            <li><span>Email</span><strong>anythingautomotive2018@gmail.com</strong></li>
+            <li><span>Main next step</span><strong>Schedule service or Ask Chris</strong></li>
+          </ul>
+          <div class="map"><div><strong style="display:block;color:#fff;margin-bottom:.45rem">Map and directions area</strong><span>Ready for an embedded map or directions link.</span></div></div>
+        </div>
+        <div class="panel">
+          <h3>Local shop. Practical service.</h3>
+          <p>The public launch keeps the message centered on trust, service, useful answers, and easy contact.</p>
+          <p>Ask Chris handles first-pass online questions. When direct review is needed, the question can be sent straight to Chris.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="tel:+17247832008">Call the shop</a>
+            <a class="btn btn-secondary" href="mailto:anythingautomotive2018@gmail.com">Email the shop</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="brand"><div class="logo-box">AA</div><div><strong>Anything Automotive LLC</strong><span>Consumer-facing launch site</span></div></div>
+    </div>
+  </footer>
+
+  <script>
+    function byId(id){return document.getElementById(id);}
+    function escapeHtml(value){return String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;').replaceAll("'",'&#39;');}
+    function showBox(id,message){const el=byId(id); if(!el) return; el.innerHTML=message; el.classList.add('show');}
+    function appendChat(role, html){const log=byId('chatLog'); const item=document.createElement('div'); item.className=`bubble ${role}`; item.innerHTML=html; log.appendChild(item); log.scrollTop=log.scrollHeight;}
+    async function requestAskChris(payload){
+      const config = window.AA_SITE_CONFIG || {};
+      const endpoint = config.askChrisEndpoint || '/api/ask-chris';
+      const response = await fetch(endpoint, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      if(!response.ok) throw new Error(`Request failed with status ${response.status}`);
+      return await response.json();
+    }
+
+    byId('scheduleForm').addEventListener('submit', function(event){
+      event.preventDefault();
+      const data=new FormData(event.target);
+      const subject=encodeURIComponent(`Service request: ${data.get('service') || 'General service'}`);
+      const body=encodeURIComponent(
+        `Name: ${data.get('name') || ''}\n` +
+        `Phone: ${data.get('phone') || ''}\n` +
+        `Vehicle: ${data.get('vehicle') || ''}\n` +
+        `Service requested: ${data.get('service') || ''}\n\n` +
+        `Notes:\n${data.get('notes') || ''}`
+      );
+      window.location.href=`mailto:anythingautomotive2018@gmail.com?subject=${subject}&body=${body}`;
+      showBox('scheduleStatus','Your email app should open with your service request. If it does not, please call the shop directly.');
+      event.target.reset();
+    });
+
+    byId('reviewForm').addEventListener('submit', function(event){
+      event.preventDefault();
+      const data=new FormData(event.target);
+      const reviewer=escapeHtml(data.get('reviewer') || 'Customer');
+      showBox('reviewStatus',`${reviewer}, thank you for your feedback. Your review was received and can be published after approval.`);
+      event.target.reset();
+    });
+
+    byId('askChrisForm').addEventListener('submit', async function(event){
+      event.preventDefault();
+      const question=(byId('askChrisQuestion').value || '').trim();
+      const name=(byId('askChrisName').value || '').trim();
+      const replyTo=(byId('askChrisReply').value || '').trim();
+      if(!question) return;
+      appendChat('user', `${name ? `<strong>${escapeHtml(name)}:</strong><br>` : ''}${escapeHtml(question)}`);
+      appendChat('ai', '<strong>Ask Chris Assistant</strong><br><br>Thinking through that now...');
+      const last=byId('chatLog').lastElementChild;
+      try{
+        const result=await requestAskChris({question,name,replyTo,source:'website'});
+        last.innerHTML=`<strong>${escapeHtml(result.title || 'Ask Chris')}</strong><br><br>${escapeHtml(result.answer || 'No answer returned.')}`;
+        byId('responseActions').style.display='flex';
+        byId('escalationQuestion').value=question;
+        if(result.shouldEscalate){
+          showBox('askChrisStatus', 'This question would benefit from direct follow-up from Chris.');
+        } else {
+          showBox('askChrisStatus', 'If you still need direct help, use the Send to Chris option.');
+        }
+      }catch(error){
+        last.innerHTML='<strong>Ask Chris Assistant</strong><br><br>I could not reach the live answer service right now. Please try again, request service, or send the question directly to Chris for follow-up.';
+        byId('responseActions').style.display='flex';
+      }
+      event.target.reset();
+    });
+
+    byId('helpfulBtn').addEventListener('click', function(){ showBox('askChrisStatus', 'Glad that helped. If you need service, use the request form below.'); });
+    byId('anotherBtn').addEventListener('click', function(){ byId('askChrisQuestion').focus(); });
+    byId('escalateBtn').addEventListener('click', function(){ const panel=byId('escalationPanel'); panel.classList.add('show'); panel.scrollIntoView({behavior:'smooth', block:'start'}); });
+
+    byId('escalationForm').addEventListener('submit', function(event){
+      event.preventDefault();
+      const form=new FormData(event.target);
+      const email=(window.AA_SITE_CONFIG && window.AA_SITE_CONFIG.escalationEmail) || 'askchris@anythingautomotivepa.com';
+      const subject=encodeURIComponent('Ask Chris follow-up request');
+      const body=encodeURIComponent(
+        `Name: ${form.get('name') || ''}\n` +
+        `Best contact: ${form.get('contact') || ''}\n\n` +
+        `Question:\n${byId('escalationQuestion').value || ''}\n\n` +
+        `Additional notes:\n${form.get('notes') || ''}`
+      );
+      window.location.href=`mailto:${email}?subject=${subject}&body=${body}`;
+      showBox('escalationStatus', 'Your email app should open with a direct follow-up request to Chris.');
+      event.target.reset();
+    });
+  </script>
+</body>
+</html>
