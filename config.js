@@ -1,5 +1,5 @@
 window.AA_SITE_CONFIG = {
   askChrisEndpoint: "/api/ask-chris",
-  demoFallback: false,
+  googleReviewsEndpoint: "/api/google-reviews",
   escalationEmail: "askchris@anythingautomotivepa.com"
 };
