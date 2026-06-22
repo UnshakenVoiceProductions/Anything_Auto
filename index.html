@@ -4,58 +4,168 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anything Automotive LLC | Rural Valley, PA</title>
-  <meta name="description" content="Anything Automotive LLC is a family-owned auto repair shop in Rural Valley, Pennsylvania offering diagnostics, maintenance, inspections, repairs, and direct customer support." />
+  <meta name="description" content="Anything Automotive LLC is a family-owned auto repair shop in Rural Valley, Pennsylvania offering diagnostics, maintenance, inspections, repairs, and customer support." />
   <meta name="theme-color" content="#11151b" />
   <script src="./config.js"></script>
   <style>
-    :root{
-      --bg:#0c0f14;--panel:#171c24;--panel2:#1e2530;--text:#f5f7fa;--muted:#c8ced7;--line:rgba(255,255,255,.08);
-      --accent:#f07d00;--accent2:#ffa540;--ok:#9ae6a6;--shadow:0 24px 70px rgba(0,0,0,.28);--radius:22px;--max:1180px;
+    :root {
+      --bg:#0b0d11; --panel:#171c23; --panel2:#202734; --text:#f5f7fa; --muted:#c8ced7;
+      --line:rgba(255,255,255,.08); --accent:#f07d00; --accent2:#ffab4d; --radius:22px;
+      --shadow:0 24px 70px rgba(0,0,0,.28); --max:1180px;
     }
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#0b0d11 0%,#11161d 100%);color:var(--text);line-height:1.6}
-    a{text-decoration:none;color:inherit} .container{width:min(var(--max),calc(100% - 2rem));margin:0 auto}
-    .topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,12,16,.84);border-bottom:1px solid var(--line)}
-    .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-    .brand{display:flex;align-items:center;gap:.9rem}.logo-box{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,#fff0dd,#ffba63 55%,#d96b00);display:grid;place-items:center;box-shadow:var(--shadow);color:#2a1707;font-weight:900;font-size:1.45rem}
-    .brand strong{display:block}.brand span{display:block;color:var(--muted);font-size:.92rem}
-    .nav-links{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;color:var(--muted)}
-    .nav-links a:hover{color:#fff}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:999px;padding:.95rem 1.2rem;border:1px solid transparent;font-weight:800;cursor:pointer;transition:transform .15s ease}
-    .btn:hover{transform:translateY(-1px)} .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#201307;box-shadow:0 14px 34px rgba(240,125,0,.28)} .btn-secondary{background:rgba(255,255,255,.03);color:#fff;border-color:rgba(255,255,255,.14)}
-    .eyebrow{display:inline-flex;align-items:center;padding:.42rem .78rem;border-radius:999px;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;color:#ffd9ae;background:rgba(240,125,0,.1);border:1px solid rgba(240,125,0,.2);font-weight:800}
-    h1,h2,h3,p{margin-top:0} h1{font-size:clamp(2.35rem,5vw,4.6rem);line-height:1.02;margin-bottom:1rem;letter-spacing:-.04em} h2{font-size:clamp(1.7rem,3vw,2.7rem);line-height:1.08;margin-bottom:.8rem} h3{font-size:1.15rem;margin-bottom:.55rem} p{color:var(--muted)}
-    .hero{padding:4.7rem 0 2.2rem}.hero-grid,.grid-2,.grid-3,.grid-4,.reviews,.faq{display:grid;gap:1rem}.hero-grid{grid-template-columns:1.15fr .85fr}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-4,.reviews{grid-template-columns:repeat(4,minmax(0,1fr))}.faq{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .panel,.hero-copy,.hero-card,.review-card,.faq-item{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.25rem}
-    .hero-card{background:radial-gradient(circle at top right,rgba(240,125,0,.22),transparent 36%),linear-gradient(180deg,#171c23,#10141a)}
-    .actions,.pill-row{display:flex;flex-wrap:wrap;gap:.7rem}.actions{margin-top:1.4rem}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem;margin-top:1.5rem}.stat{padding:1rem;border-radius:18px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03)} .stat strong{display:block;color:#fff}
-    section{padding:1.2rem 0 1.95rem}.section-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1rem}
-    .card-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(240,125,0,.1);border:1px solid rgba(240,125,0,.18);color:var(--accent2);margin-bottom:.75rem;font-size:1.2rem}
-    label{display:grid;gap:.35rem;color:var(--muted);font-size:.92rem} input,select,textarea{width:100%;padding:.95rem 1rem;border-radius:16px;color:#fff;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);outline:none;font:inherit} textarea{resize:vertical} input::placeholder,textarea::placeholder{color:#96a0ad}
-    .form-grid,.stack{display:grid;gap:.85rem}.form-grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .hours,.list{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.75rem}.hours li,.list li{display:flex;justify-content:space-between;gap:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--line)} .hours li:last-child,.list li:last-child{border-bottom:0;padding-bottom:0}
-    .chat-log{min-height:250px;max-height:420px;overflow:auto;border-radius:18px;border:1px solid var(--line);background:rgba(0,0,0,.18);padding:1rem;display:grid;gap:.8rem}
-    .bubble{padding:.85rem 1rem;border-radius:18px;max-width:90%;border:1px solid var(--line)} .bubble.user{margin-left:auto;background:rgba(240,125,0,.12)} .bubble.ai{background:rgba(255,255,255,.05)}
-    .status{display:none;border-radius:18px;padding:.95rem 1rem;margin-top:.9rem;background:rgba(240,125,0,.08);border:1px solid rgba(240,125,0,.2);color:#ffd7b1}.status.show{display:block}
-    .stars{color:#ffcc69;letter-spacing:.08em;margin-bottom:.7rem}.review-card small{display:block;color:var(--muted);margin-top:.8rem}
-    .faq-item summary{cursor:pointer;font-weight:800}.faq-item p{margin-top:.7rem;margin-bottom:0}
-    .map{min-height:220px;border-radius:18px;border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:1rem;color:var(--muted);background:linear-gradient(rgba(16,20,26,.68),rgba(16,20,26,.78)),radial-gradient(circle at top right,rgba(240,125,0,.25),transparent 40%),#131922;margin-top:1rem}
-    footer{padding:1rem 0 2.4rem;border-top:1px solid var(--line);margin-top:1rem;background:rgba(255,255,255,.02)}
-    @media(max-width:980px){.hero-grid,.grid-4,.reviews,.faq,.grid-3{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr}}
-    @media(max-width:760px){.nav{flex-direction:column;align-items:flex-start;padding:.8rem 0}.nav-links,.grid-2,.grid-3,.grid-4,.reviews,.faq,.form-grid.two,.hero-grid{grid-template-columns:1fr;display:grid}.hero{padding-top:2.6rem}}
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0; font-family:Inter,Arial,Helvetica,sans-serif; color:var(--text);
+      background:linear-gradient(180deg,#0b0d11 0%,#11161d 100%); line-height:1.6;
+    }
+    a { color:inherit; text-decoration:none; }
+    img { max-width:100%; display:block; }
+    .container { width:min(var(--max), calc(100% - 2rem)); margin:0 auto; }
+    .topbar {
+      position:sticky; top:0; z-index:50; backdrop-filter:blur(14px);
+      background:rgba(10,12,16,.86); border-bottom:1px solid var(--line);
+    }
+    .nav { min-height:82px; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .brand { display:flex; align-items:center; gap:.9rem; min-width:0; }
+    .brand-logo {
+      width:72px; height:72px; object-fit:contain; border-radius:18px; background:#fff; padding:4px; box-shadow:var(--shadow);
+    }
+    .brand-copy strong { display:block; font-size:1rem; letter-spacing:.02em; }
+    .brand-copy span { display:block; color:var(--muted); font-size:.92rem; }
+    .nav-links { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; color:var(--muted); }
+    .nav-links a:hover { color:#fff; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:999px;
+      padding:.95rem 1.2rem; border:1px solid transparent; font-weight:800; cursor:pointer;
+      transition:transform .15s ease;
+    }
+    .btn:hover { transform:translateY(-1px); }
+    .btn-primary { background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#221307; box-shadow:0 14px 34px rgba(240,125,0,.28); }
+    .btn-secondary { background:rgba(255,255,255,.03); color:#fff; border-color:rgba(255,255,255,.14); }
+    .eyebrow {
+      display:inline-flex; align-items:center; padding:.45rem .8rem; border-radius:999px;
+      font-size:.82rem; text-transform:uppercase; letter-spacing:.05em; color:#ffd9ae;
+      background:rgba(240,125,0,.1); border:1px solid rgba(240,125,0,.2); font-weight:800;
+    }
+    h1,h2,h3,h4,p { margin-top:0; }
+    h1 { font-size:clamp(2.35rem,5vw,4.7rem); line-height:1.02; margin-bottom:1rem; letter-spacing:-.04em; }
+    h2 { font-size:clamp(1.7rem,3vw,2.7rem); line-height:1.08; margin-bottom:.8rem; }
+    h3 { font-size:1.15rem; margin-bottom:.55rem; }
+    p { color:var(--muted); }
+    .hero { padding:4.7rem 0 2.2rem; }
+    .hero-grid,.grid-2,.grid-3,.grid-4,.reviews-grid,.faq-grid,.code-grid {
+      display:grid; gap:1rem;
+    }
+    .hero-grid { grid-template-columns:1.15fr .85fr; }
+    .grid-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .grid-3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .grid-4,.reviews-grid,.code-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+    .faq-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .panel,.hero-copy,.hero-card,.faq-item,.review-card {
+      background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.02));
+      border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:1.25rem;
+    }
+    .hero-card {
+      background:radial-gradient(circle at top right,rgba(240,125,0,.22),transparent 36%),linear-gradient(180deg,#171c23,#10141a);
+    }
+    .actions,.chip-row,.footer-links {
+      display:flex; flex-wrap:wrap; gap:.7rem;
+    }
+    .actions { margin-top:1.4rem; }
+    .stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.9rem; margin-top:1.5rem; }
+    .stat {
+      padding:1rem; border-radius:18px; border:1px solid rgba(255,255,255,.06); background:rgba(255,255,255,.03);
+    }
+    .stat strong { display:block; color:#fff; }
+    section { padding:1.2rem 0 1.95rem; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap:1rem; margin-bottom:1rem; }
+    .card-icon {
+      width:44px; height:44px; border-radius:14px; display:grid; place-items:center;
+      background:rgba(240,125,0,.1); border:1px solid rgba(240,125,0,.18); color:var(--accent2);
+      margin-bottom:.75rem; font-size:1.2rem;
+    }
+    label { display:grid; gap:.35rem; color:var(--muted); font-size:.92rem; }
+    input,select,textarea {
+      width:100%; padding:.95rem 1rem; border-radius:16px; color:#fff;
+      background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); outline:none; font:inherit;
+    }
+    textarea { resize:vertical; }
+    input::placeholder,textarea::placeholder { color:#96a0ad; }
+    .form-grid,.stack { display:grid; gap:.85rem; }
+    .form-grid.two { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .hours,.list { list-style:none; padding:0; margin:1rem 0 0; display:grid; gap:.75rem; }
+    .hours li,.list li {
+      display:flex; justify-content:space-between; gap:1rem; padding-bottom:.75rem; border-bottom:1px solid var(--line);
+    }
+    .hours li:last-child,.list li:last-child { border-bottom:0; padding-bottom:0; }
+    .chat-log {
+      min-height:260px; max-height:430px; overflow:auto; border-radius:18px;
+      border:1px solid var(--line); background:rgba(0,0,0,.18); padding:1rem; display:grid; gap:.8rem;
+    }
+    .bubble { padding:.9rem 1rem; border-radius:18px; max-width:92%; border:1px solid var(--line); }
+    .bubble.user { margin-left:auto; background:rgba(240,125,0,.12); }
+    .bubble.ai { background:rgba(255,255,255,.05); }
+    .status {
+      display:none; border-radius:18px; padding:.95rem 1rem; margin-top:.9rem;
+      background:rgba(240,125,0,.08); border:1px solid rgba(240,125,0,.2); color:#ffd7b1;
+    }
+    .status.show { display:block; }
+    .stars { color:#ffcc69; letter-spacing:.08em; margin-bottom:.7rem; }
+    .review-card small { display:block; color:var(--muted); margin-top:.8rem; }
+    .faq-item summary { cursor:pointer; font-weight:800; }
+    .faq-item p { margin-top:.7rem; margin-bottom:0; }
+    .map {
+      min-height:220px; border-radius:18px; border:1px solid var(--line); display:grid; place-items:center; text-align:center;
+      padding:1rem; color:var(--muted); background:linear-gradient(rgba(16,20,26,.68),rgba(16,20,26,.78)),radial-gradient(circle at top right,rgba(240,125,0,.25),transparent 40%),#131922; margin-top:1rem;
+    }
+    .chip {
+      border-radius:999px; padding:.4rem .7rem; background:rgba(255,255,255,.04); border:1px solid var(--line); color:var(--muted); font-size:.84rem;
+    }
+    .review-summary {
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1rem;
+      padding:1rem; border:1px solid var(--line); border-radius:18px; background:rgba(255,255,255,.03);
+    }
+    .muted-note { color:var(--muted); font-size:.95rem; }
+    .floating-chris {
+      position:fixed; right:18px; bottom:18px; z-index:60; width:68px; height:68px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.15); background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#241406; box-shadow:var(--shadow); font-weight:900; cursor:pointer;
+    }
+    footer {
+      padding:1rem 0 2.4rem; border-top:1px solid var(--line); margin-top:1rem; background:rgba(255,255,255,.02);
+    }
+    .footer-row {
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;
+    }
+    @media (max-width:980px) {
+      .hero-grid,.grid-3,.grid-4,.reviews-grid,.faq-grid,.code-grid { grid-template-columns:1fr 1fr; }
+      .stats { grid-template-columns:1fr; }
+    }
+    @media (max-width:760px) {
+      .nav { flex-direction:column; align-items:flex-start; padding:.8rem 0; }
+      .nav-links,.grid-2,.grid-3,.grid-4,.reviews-grid,.faq-grid,.code-grid,.form-grid.two,.hero-grid { grid-template-columns:1fr; display:grid; }
+      .hero { padding-top:2.6rem; }
+      .brand-logo { width:62px; height:62px; }
+    }
   </style>
 </head>
 <body>
   <div class="topbar">
     <div class="container nav">
       <a class="brand" href="#top">
-        <div class="logo-box">AA</div>
-        <div><strong>Anything Automotive LLC</strong><span>Rural Valley, Pennsylvania</span></div>
+        <img class="brand-logo" src="data:image/webp;base64,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" alt="Anything Automotive LLC logo" />
+        <div class="brand-copy">
+          <strong>Anything Automotive LLC</strong>
+          <span>Rural Valley, Pennsylvania</span>
+        </div>
       </a>
       <div class="nav-links">
         <a href="#services">Services</a>
         <a href="#ask-chris">Ask Chris</a>
-        <a href="#schedule">Schedule</a>
         <a href="#reviews">Reviews</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
         <a class="btn btn-primary" href="#schedule">Request Service</a>
       </div>
@@ -84,24 +194,30 @@
           <div>
             <div class="eyebrow">Hours & Quick Info</div>
             <h3>Ready for everyday service and harder-to-find answers.</h3>
-            <p>Use the website for service requests, quick questions, and direct follow-up when a concern needs more personal attention.</p>
+            <p>Use the website for service requests, quick questions, live Google reviews, and direct follow-up when something needs more personal attention.</p>
           </div>
-          <ul class="hours">
-            <li><span>Monday</span><strong>8:00 AM – 5:00 PM</strong></li>
-            <li><span>Tuesday</span><strong>8:00 AM – 5:00 PM</strong></li>
-            <li><span>Wednesday</span><strong>8:00 AM – 5:00 PM</strong></li>
-            <li><span>Thursday</span><strong>8:00 AM – 5:00 PM</strong></li>
-            <li><span>Friday</span><strong>8:00 AM – 5:00 PM</strong></li>
+          <ul class="hours" id="hoursList">
+            <li><span>Monday</span><strong>9:00 AM – 6:00 PM</strong></li>
+            <li><span>Tuesday</span><strong>9:00 AM – 6:00 PM</strong></li>
+            <li><span>Wednesday</span><strong>9:00 AM – 6:00 PM</strong></li>
+            <li><span>Thursday</span><strong>9:00 AM – 6:00 PM</strong></li>
+            <li><span>Friday</span><strong>9:00 AM – 6:00 PM</strong></li>
             <li><span>Saturday</span><strong>By appointment</strong></li>
             <li><span>Sunday</span><strong>Closed</strong></li>
           </ul>
+          <div class="chip-row" style="margin-top:1rem;">
+            <span class="chip">Diagnostics</span>
+            <span class="chip">Maintenance</span>
+            <span class="chip">Inspections</span>
+            <span class="chip">Repairs</span>
+          </div>
         </aside>
       </div>
     </section>
 
     <section id="services">
       <div class="container">
-        <div class="section-head"><div><h2>Services</h2><p>Clear, customer-facing service categories for the first public launch.</p></div></div>
+        <div class="section-head"><div><h2>Services</h2><p>Clear, customer-facing service categories for the public launch.</p></div></div>
         <div class="grid-4">
           <article class="panel"><div class="card-icon">🔍</div><h3>Diagnostics</h3><p>Warning lights, drivability issues, electrical concerns, intermittent problems, and hard-to-find faults.</p></article>
           <article class="panel"><div class="card-icon">🛢️</div><h3>Maintenance</h3><p>Oil changes, filters, fluids, and general preventive service.</p></article>
@@ -117,48 +233,58 @@
 
     <section id="ask-chris">
       <div class="container">
-        <div class="section-head"><div><h2>Ask Chris</h2><p>Ask a question online and get a practical first-pass answer. If the issue needs direct review, you can send it straight to Chris.</p></div></div>
-        <div class="grid-2">
-          <div class="panel">
-            <div class="chat-log" id="chatLog">
-              <div class="bubble ai"><strong>Ask Chris Assistant</strong><br><br>Describe the concern in plain language. You will get a practical first-pass answer and clear next steps.</div>
-            </div>
-            <form id="askChrisForm" class="stack" style="margin-top:1rem">
-              <div class="form-grid two">
-                <label>Your name<input id="askChrisName" placeholder="Your name" /></label>
-                <label>Email or phone<input id="askChrisReply" placeholder="How the shop can reach you" /></label>
-              </div>
-              <label>Your question<textarea id="askChrisQuestion" rows="5" placeholder="Example: My truck has a vibration around 60 mph and sometimes pulls to one side. What should I have checked first?" required></textarea></label>
-              <button class="btn btn-primary" type="submit">Get an answer</button>
-            </form>
-            <div class="actions" id="responseActions" style="display:none;margin-top:1rem">
-              <button id="helpfulBtn" class="btn btn-secondary" type="button">That helped</button>
-              <button id="anotherBtn" class="btn btn-secondary" type="button">Ask another question</button>
-              <button id="escalateBtn" class="btn btn-primary" type="button">Send to Chris</button>
-            </div>
-            <div id="askChrisStatus" class="status"></div>
+        <div class="section-head"><div><h2>Ask Chris</h2><p>Chris is your digital mechanic assistant. Ask a question online and get a practical first-pass answer. If the issue needs direct review, you can send it straight to Chris.</p></div></div>
+        <div class="panel">
+          <div class="chat-log" id="chatLog">
+            <div class="bubble ai"><strong>Chris, your digital mechanic</strong><br><br>Describe the concern in plain language. You will get a practical first-pass answer and clear next steps.</div>
           </div>
-          <div class="panel">
-            <h3>When direct follow-up makes sense</h3>
-            <ul class="list">
-              <li><span>Safety-critical issue</span><strong>Priority follow-up</strong></li>
-              <li><span>Customer wants direct contact</span><strong>Chris review</strong></li>
-              <li><span>Low-confidence answer</span><strong>Escalated</strong></li>
-              <li><span>Issue needs in-person testing</span><strong>Schedule service</strong></li>
-            </ul>
-            <div id="escalationPanel" class="status">
-              <h3>Send this to Chris</h3>
-              <form id="escalationForm" class="stack">
-                <div class="form-grid two">
-                  <label>Your name<input name="name" required /></label>
-                  <label>Best contact<input name="contact" required /></label>
-                </div>
-                <label>Question for follow-up<textarea id="escalationQuestion" rows="4" required></textarea></label>
-                <label>Additional notes<textarea name="notes" rows="3" placeholder="Anything else Chris should know before following up?"></textarea></label>
-                <button class="btn btn-primary" type="submit">Request direct follow-up</button>
-              </form>
-              <div id="escalationStatus" class="status"></div>
+          <form id="askChrisForm" class="stack" style="margin-top:1rem">
+            <div class="form-grid two">
+              <label>Your name<input id="askChrisName" placeholder="Your name" /></label>
+              <label>Email or phone<input id="askChrisReply" placeholder="How the shop can reach you" /></label>
             </div>
+            <label>Your question<textarea id="askChrisQuestion" rows="5" placeholder="Example: My truck has a vibration around 60 mph and sometimes pulls to one side. What should I have checked first?" required></textarea></label>
+            <button class="btn btn-primary" type="submit">Get an answer</button>
+          </form>
+          <div class="actions" id="responseActions" style="display:none;margin-top:1rem">
+            <button id="helpfulBtn" class="btn btn-secondary" type="button">That helped</button>
+            <button id="anotherBtn" class="btn btn-secondary" type="button">Ask another question</button>
+            <button id="escalateBtn" class="btn btn-primary" type="button">Send to Chris</button>
+          </div>
+          <div id="askChrisStatus" class="status"></div>
+          <div id="escalationPanel" class="status">
+            <h3>Send this to Chris</h3>
+            <form id="escalationForm" class="stack">
+              <div class="form-grid two">
+                <label>Your name<input name="name" required /></label>
+                <label>Best contact<input name="contact" required /></label>
+              </div>
+              <label>Question for follow-up<textarea id="escalationQuestion" rows="4" required></textarea></label>
+              <label>Additional notes<textarea name="notes" rows="3" placeholder="Anything else Chris should know before following up?"></textarea></label>
+              <button class="btn btn-primary" type="submit">Request direct follow-up</button>
+            </form>
+            <div id="escalationStatus" class="status"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container">
+        <div class="section-head"><div><h2>Google reviews</h2><p>See live Google review information here and leave a review directly on Google when the review link is available.</p></div></div>
+        <div class="panel">
+          <div class="review-summary">
+            <div>
+              <strong id="reviewHeadline">Live Google reviews</strong>
+              <div class="muted-note" id="reviewSubhead">Connecting to the Google business listing.</div>
+            </div>
+            <div class="actions">
+              <a id="googleReviewLink" class="btn btn-primary" href="#" target="_blank" rel="noopener" style="display:none;">Leave a Google review</a>
+              <a id="googleMapsLink" class="btn btn-secondary" href="#" target="_blank" rel="noopener" style="display:none;">Open on Google</a>
+            </div>
+          </div>
+          <div id="reviewsGrid" class="reviews-grid">
+            <article class="review-card"><div class="stars">★★★★★</div><p>Live Google reviews will load here after the Google listing connection is configured.</p><small>Review feed</small></article>
           </div>
         </div>
       </div>
@@ -186,59 +312,36 @@
           <div class="panel">
             <h3>Helpful details to include</h3>
             <ul class="list">
-              <li><span>When the problem happens</span><strong>Cold / warm / highway / braking</strong></li>
+              <li><span>When the problem happened</span><strong>Cold / warm / highway / braking</strong></li>
               <li><span>Any warning lights</span><strong>Helpful for diagnostics</strong></li>
               <li><span>Recent repairs or parts</span><strong>Good context</strong></li>
-              <li><span>Best contact method</span><strong>Call or email</strong></li>
+              <li><span>Best way to reach you</span><strong>Call or email</strong></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="reviews">
+    <section id="codes">
       <div class="container">
-        <div class="section-head"><div><h2>Customer reviews</h2><p>Share your experience and help future customers know what to expect.</p></div></div>
-        <div class="reviews">
-          <article class="review-card"><div class="stars">★★★★★</div><p>Professional, straightforward, and easy to work with. The site should feel just as dependable as the shop itself.</p><small>Preview testimonial</small></article>
-          <article class="review-card"><div class="stars">★★★★★</div><p>Ask Chris is a good way to get a helpful first answer before deciding whether a full appointment is needed.</p><small>Preview testimonial</small></article>
-          <article class="review-card"><div class="stars">★★★★★</div><p>The website is clear and easy to use, and the orange-and-black look fits the business well.</p><small>Preview testimonial</small></article>
-          <article class="review-card"><div class="stars">★★★★★</div><p>Strong diagnostics and practical communication make a real difference when a vehicle issue is hard to explain.</p><small>Preview testimonial</small></article>
-        </div>
-        <div class="grid-2" style="margin-top:1rem">
-          <div class="panel">
-            <h3>Leave a review</h3>
-            <form id="reviewForm" class="stack">
-              <div class="form-grid two">
-                <label>Your name<input name="reviewer" placeholder="Your name" required></label>
-                <label>Rating<select name="rating" required><option value="">Choose</option><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option></select></label>
-              </div>
-              <label>Review<textarea name="reviewText" rows="5" placeholder="Tell us about your experience" required></textarea></label>
-              <button class="btn btn-primary" type="submit">Submit review</button>
-            </form>
-            <div id="reviewStatus" class="status"></div>
-          </div>
-          <div class="panel">
-            <h3>What customers can expect</h3>
-            <ul class="list">
-              <li><span>Clear communication</span><strong>Always</strong></li>
-              <li><span>Honest next steps</span><strong>Always</strong></li>
-              <li><span>Direct shop follow-up</span><strong>When needed</strong></li>
-              <li><span>More customer tools</span><strong>Added over time</strong></li>
-            </ul>
-          </div>
+        <div class="section-head"><div><h2>Common codes, symptoms, and diagnostics</h2><p>These examples give customers a simple starting point before scheduling a proper inspection.</p></div></div>
+        <div class="code-grid">
+          <article class="panel"><div class="card-icon">🧪</div><h3>P0101</h3><p>Mass air flow performance issues can affect drivability, fuel trims, idle quality, and acceleration. Testing is usually better than guessing parts.</p></article>
+          <article class="panel"><div class="card-icon">⛽</div><h3>P2022</h3><p>Fuel level sensor range or performance issues can affect gauge accuracy and fuel-system reporting. It may not be the root cause of another symptom, but it still needs attention.</p></article>
+          <article class="panel"><div class="card-icon">🛞</div><h3>Vibration, wobble, or clicking</h3><p>These symptoms can come from tires, front-end parts, brakes, wheel bearings, CV joints, or alignment-related issues. The speed and conditions matter.</p></article>
+          <article class="panel"><div class="card-icon">🚨</div><h3>Check engine light</h3><p>A code points in a direction, but proper testing is still needed before recommending parts or repairs.</p></article>
         </div>
       </div>
     </section>
 
-    <section>
+    <section id="faq">
       <div class="container">
-        <div class="section-head"><div><h2>Frequently asked questions</h2><p>Simple answers for common first-time customer questions.</p></div></div>
-        <div class="faq">
-          <details class="faq-item" open><summary>Can I ask a question before I schedule?</summary><p>Yes. Start with Ask Chris. If you still need direct help, the question can be sent for personal follow-up.</p></details>
-          <details class="faq-item"><summary>Do I need to know exactly what is wrong with my vehicle?</summary><p>No. Plain-language descriptions are enough. Include the symptoms, when they happen, and any warning lights or noises.</p></details>
-          <details class="faq-item"><summary>Can I request an inspection appointment online?</summary><p>Yes. Use the service request form and include any concerns that may affect inspection or repair planning.</p></details>
-          <details class="faq-item"><summary>Will more customer tools be added later?</summary><p>Yes. The launch version stays clear and straightforward while leaving room for future customer features.</p></details>
+        <div class="section-head"><div><h2>Frequently asked questions</h2><p>Sample questions with simple answers for first-time visitors.</p></div></div>
+        <div class="faq-grid">
+          <details class="faq-item" open><summary>My vehicle shakes at highway speed. What should I mention when I contact the shop?</summary><p>Include the speed range, whether it changes during braking or turning, and whether the steering wheel shakes or the whole vehicle vibrates.</p></details>
+          <details class="faq-item"><summary>If my check engine light is on, should I still drive it?</summary><p>If the light is flashing, the vehicle is running poorly, or the problem feels unsafe, limit driving and have it checked as soon as possible.</p></details>
+          <details class="faq-item"><summary>Can I ask a question before I schedule?</summary><p>Yes. Start with Ask Chris for a first-pass answer. If you still need direct help, you can send the question to Chris for follow-up.</p></details>
+          <details class="faq-item"><summary>What helps the shop diagnose a problem faster?</summary><p>Recent repairs, warning lights, when the issue happens, unusual noises, smells, temperature changes, and whether the problem is constant or intermittent.</p></details>
         </div>
       </div>
     </section>
@@ -253,12 +356,12 @@
             <li><span>Email</span><strong>anythingautomotive2018@gmail.com</strong></li>
             <li><span>Main next step</span><strong>Schedule service or Ask Chris</strong></li>
           </ul>
-          <div class="map"><div><strong style="display:block;color:#fff;margin-bottom:.45rem">Map and directions area</strong><span>Ready for an embedded map or directions link.</span></div></div>
+          <div class="map"><div><strong style="display:block;color:#fff;margin-bottom:.45rem">Map and directions area</strong><span>Ready for an embedded map or Google directions link.</span></div></div>
         </div>
         <div class="panel">
           <h3>Local shop. Practical service.</h3>
-          <p>The public launch keeps the message centered on trust, service, useful answers, and easy contact.</p>
-          <p>Ask Chris handles first-pass online questions. When direct review is needed, the question can be sent straight to Chris.</p>
+          <p>The public launch keeps the message centered on trust, service, useful answers, live Google reviews, and easy contact.</p>
+          <p>Chris handles first-pass online questions. When direct review is needed, the question can be sent straight to the shop.</p>
           <div class="actions">
             <a class="btn btn-primary" href="tel:+17247832008">Call the shop</a>
             <a class="btn btn-secondary" href="mailto:anythingautomotive2018@gmail.com">Email the shop</a>
@@ -269,93 +372,197 @@
   </main>
 
   <footer>
-    <div class="container">
-      <div class="brand"><div class="logo-box">AA</div><div><strong>Anything Automotive LLC</strong><span>Consumer-facing launch site</span></div></div>
+    <div class="container footer-row">
+      <div>
+        <strong>Anything Automotive LLC</strong><br />
+        <span class="muted-note">© <span id="yearNow"></span> Anything Automotive LLC. All rights reserved.</span>
+      </div>
+      <div class="footer-links">
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="./terms.html">Terms</a>
+        <a href="mailto:anythingautomotive2018@gmail.com">Contact</a>
+      </div>
     </div>
   </footer>
 
+  <button class="floating-chris" type="button" id="floatingChrisBtn" aria-label="Open Ask Chris">Chris</button>
+
   <script>
-    function byId(id){return document.getElementById(id);}
-    function escapeHtml(value){return String(value ?? '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('\"','&quot;').replaceAll("'",'&#39;');}
-    function showBox(id,message){const el=byId(id); if(!el) return; el.innerHTML=message; el.classList.add('show');}
-    function appendChat(role, html){const log=byId('chatLog'); const item=document.createElement('div'); item.className=`bubble ${role}`; item.innerHTML=html; log.appendChild(item); log.scrollTop=log.scrollHeight;}
-    async function requestAskChris(payload){
+    function byId(id) { return document.getElementById(id); }
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'",'&#39;');
+    }
+    function showBox(id, message) {
+      const el = byId(id);
+      if (!el) return;
+      el.innerHTML = message;
+      el.classList.add('show');
+    }
+    function appendChat(role, html) {
+      const log = byId('chatLog');
+      const item = document.createElement('div');
+      item.className = `bubble ${role}`;
+      item.innerHTML = html;
+      log.appendChild(item);
+      log.scrollTop = log.scrollHeight;
+    }
+    async function requestAskChris(payload) {
       const config = window.AA_SITE_CONFIG || {};
       const endpoint = config.askChrisEndpoint || '/api/ask-chris';
-      const response = await fetch(endpoint, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-      if(!response.ok) throw new Error(`Request failed with status ${response.status}`);
+      const response = await fetch(endpoint, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload)
+      });
+      if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
       return await response.json();
     }
+    async function loadGoogleBusiness() {
+      const config = window.AA_SITE_CONFIG || {};
+      const endpoint = config.googleReviewsEndpoint || '/api/google-reviews';
+      try {
+        const response = await fetch(endpoint);
+        if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
+        const data = await response.json();
+        renderGoogleBusiness(data);
+      } catch (error) {
+        byId('reviewHeadline').textContent = 'Google review connection not configured yet';
+        byId('reviewSubhead').textContent = 'Add the Google Maps Platform environment variables to show live reviews and listing hours here.';
+      }
+    }
+    function renderGoogleBusiness(data) {
+      if (!data) return;
+      const headline = byId('reviewHeadline');
+      const subhead = byId('reviewSubhead');
+      const grid = byId('reviewsGrid');
+      const leaveLink = byId('googleReviewLink');
+      const mapsLink = byId('googleMapsLink');
 
-    byId('scheduleForm').addEventListener('submit', function(event){
+      if (data.rating) {
+        headline.textContent = `${data.rating} ★ on Google`;
+        subhead.textContent = `${data.userRatingCount || 0} Google ratings${data.formattedAddress ? ' • ' + data.formattedAddress : ''}`;
+      } else {
+        headline.textContent = 'Live Google reviews';
+        subhead.textContent = data.formattedAddress || 'Google business listing connected';
+      }
+
+      if (data.googleMapsUri) {
+        mapsLink.href = data.googleMapsUri;
+        mapsLink.style.display = 'inline-flex';
+      }
+      if (data.reviewWriteUrl) {
+        leaveLink.href = data.reviewWriteUrl;
+        leaveLink.style.display = 'inline-flex';
+      } else if (data.googleMapsUri) {
+        leaveLink.href = data.googleMapsUri;
+        leaveLink.textContent = 'Leave a Google review';
+        leaveLink.style.display = 'inline-flex';
+      }
+
+      if (Array.isArray(data.weekdayDescriptions) && data.weekdayDescriptions.length) {
+        const list = byId('hoursList');
+        list.innerHTML = data.weekdayDescriptions.map(item => {
+          const parts = item.split(':');
+          const day = parts.shift() || item;
+          const value = parts.join(':').trim() || '';
+          return `<li><span>${escapeHtml(day)}</span><strong>${escapeHtml(value || 'See Google')}</strong></li>`;
+        }).join('');
+      }
+
+      if (Array.isArray(data.reviews) && data.reviews.length) {
+        grid.innerHTML = data.reviews.map(review => `
+          <article class="review-card">
+            <div class="stars">${'★'.repeat(Math.max(0, Math.min(5, review.rating || 0)))}</div>
+            <p>${escapeHtml(review.text || 'No review text provided.')}</p>
+            <small>${escapeHtml(review.author || 'Google reviewer')}${review.relativeTimeDescription ? ' • ' + escapeHtml(review.relativeTimeDescription) : ''}</small>
+          </article>
+        `).join('');
+      } else {
+        grid.innerHTML = '<article class="review-card"><div class="stars">★★★★★</div><p>No Google review text is available yet for display.</p><small>Google reviews</small></article>';
+      }
+    }
+
+    byId('yearNow').textContent = new Date().getFullYear();
+    byId('floatingChrisBtn').addEventListener('click', function() {
+      byId('ask-chris').scrollIntoView({behavior:'smooth', block:'start'});
+      byId('askChrisQuestion').focus();
+    });
+
+    byId('scheduleForm').addEventListener('submit', function(event) {
       event.preventDefault();
-      const data=new FormData(event.target);
-      const subject=encodeURIComponent(`Service request: ${data.get('service') || 'General service'}`);
-      const body=encodeURIComponent(
+      const data = new FormData(event.target);
+      const subject = encodeURIComponent(`Service request: ${data.get('service') || 'General service'}`);
+      const body = encodeURIComponent(
         `Name: ${data.get('name') || ''}\n` +
         `Phone: ${data.get('phone') || ''}\n` +
         `Vehicle: ${data.get('vehicle') || ''}\n` +
         `Service requested: ${data.get('service') || ''}\n\n` +
         `Notes:\n${data.get('notes') || ''}`
       );
-      window.location.href=`mailto:anythingautomotive2018@gmail.com?subject=${subject}&body=${body}`;
-      showBox('scheduleStatus','Your email app should open with your service request. If it does not, please call the shop directly.');
+      window.location.href = `mailto:anythingautomotive2018@gmail.com?subject=${subject}&body=${body}`;
+      showBox('scheduleStatus', 'Your email app should open with your service request. If it does not, please call the shop directly.');
       event.target.reset();
     });
 
-    byId('reviewForm').addEventListener('submit', function(event){
+    byId('askChrisForm').addEventListener('submit', async function(event) {
       event.preventDefault();
-      const data=new FormData(event.target);
-      const reviewer=escapeHtml(data.get('reviewer') || 'Customer');
-      showBox('reviewStatus',`${reviewer}, thank you for your feedback. Your review was received and can be published after approval.`);
-      event.target.reset();
-    });
-
-    byId('askChrisForm').addEventListener('submit', async function(event){
-      event.preventDefault();
-      const question=(byId('askChrisQuestion').value || '').trim();
-      const name=(byId('askChrisName').value || '').trim();
-      const replyTo=(byId('askChrisReply').value || '').trim();
-      if(!question) return;
+      const question = (byId('askChrisQuestion').value || '').trim();
+      const name = (byId('askChrisName').value || '').trim();
+      const replyTo = (byId('askChrisReply').value || '').trim();
+      if (!question) return;
       appendChat('user', `${name ? `<strong>${escapeHtml(name)}:</strong><br>` : ''}${escapeHtml(question)}`);
-      appendChat('ai', '<strong>Ask Chris Assistant</strong><br><br>Thinking through that now...');
-      const last=byId('chatLog').lastElementChild;
-      try{
-        const result=await requestAskChris({question,name,replyTo,source:'website'});
-        last.innerHTML=`<strong>${escapeHtml(result.title || 'Ask Chris')}</strong><br><br>${escapeHtml(result.answer || 'No answer returned.')}`;
-        byId('responseActions').style.display='flex';
-        byId('escalationQuestion').value=question;
-        if(result.shouldEscalate){
+      appendChat('ai', '<strong>Chris, your digital mechanic</strong><br><br>Thinking through that now...');
+      const last = byId('chatLog').lastElementChild;
+      try {
+        const result = await requestAskChris({ question, name, replyTo, source:'website' });
+        last.innerHTML = `<strong>${escapeHtml(result.title || 'Ask Chris')}</strong><br><br>${escapeHtml(result.answer || 'No answer returned.')}`;
+        byId('responseActions').style.display = 'flex';
+        byId('escalationQuestion').value = question;
+        if (result.shouldEscalate) {
           showBox('askChrisStatus', 'This question would benefit from direct follow-up from Chris.');
         } else {
           showBox('askChrisStatus', 'If you still need direct help, use the Send to Chris option.');
         }
-      }catch(error){
-        last.innerHTML='<strong>Ask Chris Assistant</strong><br><br>I could not reach the live answer service right now. Please try again, request service, or send the question directly to Chris for follow-up.';
-        byId('responseActions').style.display='flex';
+      } catch (error) {
+        last.innerHTML = '<strong>Chris, your digital mechanic</strong><br><br>I could not reach the live answer service right now. Please try again, request service, or send the question directly to Chris for follow-up.';
+        byId('responseActions').style.display = 'flex';
       }
       event.target.reset();
     });
 
-    byId('helpfulBtn').addEventListener('click', function(){ showBox('askChrisStatus', 'Glad that helped. If you need service, use the request form below.'); });
-    byId('anotherBtn').addEventListener('click', function(){ byId('askChrisQuestion').focus(); });
-    byId('escalateBtn').addEventListener('click', function(){ const panel=byId('escalationPanel'); panel.classList.add('show'); panel.scrollIntoView({behavior:'smooth', block:'start'}); });
-
-    byId('escalationForm').addEventListener('submit', function(event){
+    byId('helpfulBtn').addEventListener('click', function() {
+      showBox('askChrisStatus', 'Glad that helped. If you need service, use the request form below.');
+    });
+    byId('anotherBtn').addEventListener('click', function() {
+      byId('askChrisQuestion').focus();
+    });
+    byId('escalateBtn').addEventListener('click', function() {
+      const panel = byId('escalationPanel');
+      panel.classList.add('show');
+      panel.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    byId('escalationForm').addEventListener('submit', function(event) {
       event.preventDefault();
-      const form=new FormData(event.target);
-      const email=(window.AA_SITE_CONFIG && window.AA_SITE_CONFIG.escalationEmail) || 'askchris@anythingautomotivepa.com';
-      const subject=encodeURIComponent('Ask Chris follow-up request');
-      const body=encodeURIComponent(
+      const form = new FormData(event.target);
+      const email = (window.AA_SITE_CONFIG && window.AA_SITE_CONFIG.escalationEmail) || 'askchris@anythingautomotivepa.com';
+      const subject = encodeURIComponent('Ask Chris follow-up request');
+      const body = encodeURIComponent(
         `Name: ${form.get('name') || ''}\n` +
         `Best contact: ${form.get('contact') || ''}\n\n` +
         `Question:\n${byId('escalationQuestion').value || ''}\n\n` +
         `Additional notes:\n${form.get('notes') || ''}`
       );
-      window.location.href=`mailto:${email}?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
       showBox('escalationStatus', 'Your email app should open with a direct follow-up request to Chris.');
       event.target.reset();
     });
+
+    loadGoogleBusiness();
   </script>
 </body>
 </html>
