@@ -21,15 +21,38 @@ function normalizeBody(request) {
 
 function buildSystemPrompt() {
   return [
-    'You are Ask Chris, the first-pass website assistant for Anything Automotive LLC in Rural Valley, Pennsylvania.',
-    'Sound practical, experienced, calm, and helpful.',
+    'You are Ask Chris, the first-pass digital mechanic assistant for Anything Automotive LLC in Rural Valley, Pennsylvania.',
+    'Sound practical, experienced, calm, helpful, and like a capable head mechanic speaking to a customer.',
     'Do not pretend to perform a confirmed diagnosis without inspection or testing.',
-    'Give likely categories, risk level, and clear next steps.',
-    'When a shop visit is the correct next step, say so plainly.',
-    'Avoid alarmism and avoid overselling repairs.',
-    'If a vehicle may be unsafe to drive, say that directly.',
-    'Keep the answer concise and useful for a customer.',
-    'End your answer with a final line exactly in one of these two forms: ESCALATE: yes or ESCALATE: no.'
+    'Do not invent prices, parts, or shop policies.',
+    'Focus on useful first-pass reasoning, likely causes, safety, and clear next steps.',
+    'Return only valid JSON with this exact structure:',
+    '{',
+    '"title": string,',
+    '"summary": string,',
+    '"severity": "Low" | "Moderate" | "High",',
+    '"headings": {',
+    '"whatImHearing": string,',
+    '"likelyCauses": string,',
+    '"attentionFirst": string,',
+    '"checkNow": string,',
+    '"stopDriving": string,',
+    '"nextStep": string',
+    '},',
+    '"bullets": {',
+    '"whatImHearing": string[],',
+    '"likelyCauses": string[],',
+    '"attentionFirst": string[],',
+    '"checkNow": string[],',
+    '"stopDriving": string[]',
+    '},',
+    '"nextStep": string,',
+    '"shouldEscalate": boolean',
+    '}',
+    'Keep the output concise, readable, and customer-facing.',
+    'Use short bullets, not long paragraphs.',
+    'If the issue could be unsafe to drive, set severity to High and shouldEscalate to true.',
+    'If there is any mention of fuel smell, brake concerns, overheating, smoke, severe vibration, or major drivability problems, treat safety seriously.'
   ].join(' ');
 }
 
@@ -60,12 +83,71 @@ function buildProviderOrder(question, hasOpenAI, hasAnthropic) {
   return order;
 }
 
-function extractEscalation(text) {
+function extractJsonObject(text) {
   const normalized = String(text || '').trim();
-  const match = normalized.match(/ESCALATE:\s*(yes|no)\s*$/i);
-  const shouldEscalate = match ? match[1].toLowerCase() === 'yes' : false;
-  const cleaned = match ? normalized.replace(/ESCALATE:\s*(yes|no)\s*$/i, '').trim() : normalized;
-  return { cleaned, shouldEscalate };
+  if (!normalized) throw new Error('Empty response');
+  try {
+    return JSON.parse(normalized);
+  } catch {}
+  const match = normalized.match(/\{[\s\S]*\}/);
+  if (!match) throw new Error('No JSON object found in model response');
+  return JSON.parse(match[0]);
+}
+
+function normalizeString(value, fallback = '') {
+  const str = String(value ?? '').trim();
+  return str || fallback;
+}
+
+function normalizeStringArray(value) {
+  if (!Array.isArray(value)) return [];
+  return value.map(item => normalizeString(item)).filter(Boolean).slice(0, 6);
+}
+
+function normalizeStructuredResponse(parsed, question) {
+  const headings = parsed?.headings || {};
+  const bullets = parsed?.bullets || {};
+  const result = {
+    title: normalizeString(parsed?.title, 'Chris’s first take'),
+    summary: normalizeString(parsed?.summary, 'Here is a practical first-pass read on what you described.'),
+    severity: normalizeSeverity(parsed?.severity, question),
+    headings: {
+      whatImHearing: normalizeString(headings.whatImHearing, 'What I’m hearing'),
+      likelyCauses: normalizeString(headings.likelyCauses, 'Most likely causes'),
+      attentionFirst: normalizeString(headings.attentionFirst, 'What needs attention first'),
+      checkNow: normalizeString(headings.checkNow, 'What you can check now'),
+      stopDriving: normalizeString(headings.stopDriving, 'When to stop driving'),
+      nextStep: normalizeString(headings.nextStep, 'Best next step')
+    },
+    bullets: {
+      whatImHearing: normalizeStringArray(bullets.whatImHearing),
+      likelyCauses: normalizeStringArray(bullets.likelyCauses),
+      attentionFirst: normalizeStringArray(bullets.attentionFirst),
+      checkNow: normalizeStringArray(bullets.checkNow),
+      stopDriving: normalizeStringArray(bullets.stopDriving)
+    },
+    nextStep: normalizeString(parsed?.nextStep, 'If the vehicle feels unsafe, arrange direct follow-up or an in-person inspection.'),
+    shouldEscalate: Boolean(parsed?.shouldEscalate)
+  };
+
+  if (forceEscalation(question, result)) {
+    result.severity = 'High';
+    result.shouldEscalate = true;
+  }
+  return result;
+}
+
+function normalizeSeverity(value, question) {
+  const normalized = String(value || '').trim().toLowerCase();
+  if (normalized === 'low') return 'Low';
+  if (normalized === 'moderate' || normalized === 'medium') return 'Moderate';
+  if (normalized === 'high') return 'High';
+  return forceEscalation(question, {}) ? 'High' : 'Moderate';
+}
+
+function forceEscalation(question, result) {
+  const combined = `${question || ''} ${result?.summary || ''} ${result?.nextStep || ''} ${JSON.stringify(result?.bullets || {})}`.toLowerCase();
+  return /(fuel smell|smell gas|gas smell|brake|overheat|overheating|smoke|fire|severe vibration|violent shake|unsafe|not safe|flashing check engine|loss of power)/i.test(combined);
 }
 
 async function askOpenAI(apiKey, payload) {
@@ -78,6 +160,7 @@ async function askOpenAI(apiKey, payload) {
     body: JSON.stringify({
       model: DEFAULT_OPENAI_MODEL,
       temperature: 0.2,
+      response_format: { type: 'json_object' },
       messages: [
         { role: 'system', content: buildSystemPrompt() },
         { role: 'user', content: buildUserPrompt(payload) }
@@ -104,7 +187,7 @@ async function askAnthropic(apiKey, payload) {
     },
     body: JSON.stringify({
       model: DEFAULT_ANTHROPIC_MODEL,
-      max_tokens: 500,
+      max_tokens: 900,
       temperature: 0.2,
       system: buildSystemPrompt(),
       messages: [
@@ -119,8 +202,60 @@ async function askAnthropic(apiKey, payload) {
   }
 
   const data = await response.json();
-  const textParts = Array.isArray(data?.content) ? data.content.filter(item => item.type === 'text').map(item => item.text) : [];
+  const textParts = Array.isArray(data?.content)
+    ? data.content.filter(item => item.type === 'text').map(item => item.text)
+    : [];
   return textParts.join('\n').trim();
+}
+
+function fallbackStructuredAnswer(question) {
+  const q = String(question || '');
+  const fuelConcern = /fuel smell|smell gas|gas smell/i.test(q);
+  const tireConcern = /flat|tire|tyre|losing air/i.test(q);
+  const codeMention = /\bP0?\d{3,4}\b/i.test(q);
+
+  return {
+    title: 'Chris’s first take',
+    summary: 'Here is a practical first-pass read on what you described.',
+    severity: fuelConcern ? 'High' : 'Moderate',
+    headings: {
+      whatImHearing: 'What I’m hearing',
+      likelyCauses: 'Most likely causes',
+      attentionFirst: 'What needs attention first',
+      checkNow: 'What you can check now',
+      stopDriving: 'When to stop driving',
+      nextStep: 'Best next step'
+    },
+    bullets: {
+      whatImHearing: [
+        tireConcern ? 'You mentioned a tire or air-loss problem.' : 'You described a vehicle concern that needs inspection.',
+        codeMention ? 'You also mentioned a trouble code.' : 'No confirmed warning code details were provided.',
+        fuelConcern ? 'You reported a fuel smell, which can be a safety concern.' : 'The vehicle may need condition-based troubleshooting.'
+      ].filter(Boolean),
+      likelyCauses: [
+        tireConcern ? 'A slow leak can come from the valve stem, bead, puncture, or wheel sealing surface.' : null,
+        fuelConcern ? 'A gas smell can point to a fuel leak, vapor leak, injector issue, or line concern.' : null,
+        codeMention ? 'The code may point in a useful direction, but testing is still needed before recommending parts.' : null
+      ].filter(Boolean),
+      attentionFirst: [
+        fuelConcern ? 'Treat the fuel smell as the first priority.' : 'Pay attention to anything that affects safe driving.',
+        tireConcern ? 'Do not keep driving on a tire that may be losing pressure.' : null
+      ].filter(Boolean),
+      checkNow: [
+        tireConcern ? 'Check and document the tire pressure before driving again.' : null,
+        fuelConcern ? 'Do not ignore a strong fuel smell near the engine bay.' : null,
+        'Look for obvious leaks, loose caps, or any recent repair history that changed the symptoms.'
+      ].filter(Boolean),
+      stopDriving: [
+        fuelConcern ? 'If the gas smell is strong, avoid driving until it can be checked.' : null,
+        'Stop driving if the vehicle feels unsafe, unstable, or starts running much worse.'
+      ].filter(Boolean)
+    },
+    nextStep: fuelConcern
+      ? 'Because of the fuel smell, this should be inspected soon and may not be a good vehicle to keep driving until it is checked.'
+      : 'The best next step is a proper inspection so the issue can be confirmed before parts are guessed at.',
+    shouldEscalate: fuelConcern
+  };
 }
 
 module.exports = async function handler(request, response) {
@@ -146,8 +281,7 @@ module.exports = async function handler(request, response) {
   if (!openAiKey && !anthropicKey) {
     return sendJson(response, 503, {
       error: 'Ask Chris AI is not configured yet.',
-      title: 'Ask Chris',
-      answer: 'The live answer service is not configured yet. Please call the shop or request direct follow-up.',
+      ...fallbackStructuredAnswer(question),
       shouldEscalate: true,
       escalationEmail
     });
@@ -163,11 +297,9 @@ module.exports = async function handler(request, response) {
         ? await askAnthropic(anthropicKey, payload)
         : await askOpenAI(openAiKey, payload);
 
-      const parsed = extractEscalation(raw);
+      const parsed = normalizeStructuredResponse(extractJsonObject(raw), question);
       return sendJson(response, 200, {
-        title: 'Ask Chris',
-        answer: parsed.cleaned || 'A first-pass answer was generated, but it came back empty.',
-        shouldEscalate: parsed.shouldEscalate,
+        ...parsed,
         escalationEmail,
         providerUsed: provider
       });
@@ -178,8 +310,7 @@ module.exports = async function handler(request, response) {
 
   return sendJson(response, 502, {
     error: 'Both AI providers failed.',
-    title: 'Ask Chris',
-    answer: 'The live answer service is having trouble right now. Please try again or send the question directly to Chris.',
+    ...fallbackStructuredAnswer(question),
     shouldEscalate: true,
     escalationEmail,
     details: errors
