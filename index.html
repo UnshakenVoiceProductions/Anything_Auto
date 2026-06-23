@@ -3,172 +3,317 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anything Automotive LLC | Rural Valley, PA</title>
-  <meta name="description" content="Anything Automotive LLC is a family-owned auto repair shop in Rural Valley, Pennsylvania offering diagnostics, maintenance, inspections, repairs, and customer support." />
-  <meta name="theme-color" content="#11151b" />
+  <title>Anything Automotive LLC | Rural Valley, PA Auto Repair</title>
+  <meta name="description" content="Anything Automotive LLC in Rural Valley, PA offers diagnostics, alignments, inspections, tires, brakes, A/C service, engine and transmission repair, and helpful customer support through Ask Chris." />
+  <meta name="theme-color" content="#0d1117" />
+  <link rel="icon" type="image/png" href="/AA_Logo.png" />
   <script src="./config.js"></script>
   <style>
     :root {
-      --bg:#0b0d11; --panel:#171c23; --panel2:#202734; --text:#f5f7fa; --muted:#c8ced7;
-      --line:rgba(255,255,255,.08); --accent:#f07d00; --accent2:#ffab4d; --radius:22px;
-      --shadow:0 24px 70px rgba(0,0,0,.28); --max:1180px;
+      --bg: #0b0e13;
+      --bg2: #121821;
+      --panel: rgba(255,255,255,0.04);
+      --panel-strong: rgba(255,255,255,0.07);
+      --line: rgba(255,255,255,0.10);
+      --text: #f8fafc;
+      --muted: #c2cad5;
+      --accent: #f07000;
+      --accent-2: #ff9b2d;
+      --accent-3: #ffc26d;
+      --success: #bbf7d0;
+      --radius: 24px;
+      --shadow: 0 24px 70px rgba(0,0,0,0.28);
+      --max: 1180px;
     }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      margin:0; font-family:Inter,Arial,Helvetica,sans-serif; color:var(--text);
-      background:linear-gradient(180deg,#0b0d11 0%,#11161d 100%); line-height:1.6;
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(240,112,0,0.16), transparent 30%),
+        radial-gradient(circle at top left, rgba(255,155,45,0.08), transparent 30%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      line-height: 1.6;
     }
-    a { color:inherit; text-decoration:none; }
-    img { max-width:100%; display:block; }
-    .container { width:min(var(--max), calc(100% - 2rem)); margin:0 auto; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
     .topbar {
-      position:sticky; top:0; z-index:50; backdrop-filter:blur(14px);
-      background:rgba(10,12,16,.86); border-bottom:1px solid var(--line);
+      position: sticky; top: 0; z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(7,10,14,0.82);
+      border-bottom: 1px solid var(--line);
     }
-    .nav { min-height:82px; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
-    .brand { display:flex; align-items:center; gap:.9rem; min-width:0; }
-    .brand-logo {
-      width:72px; height:72px; object-fit:contain; border-radius:18px; background:#fff; padding:4px; box-shadow:var(--shadow);
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
-    .brand-copy strong { display:block; font-size:1rem; letter-spacing:.02em; }
-    .brand-copy span { display:block; color:var(--muted); font-size:.92rem; }
-    .nav-links { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; color:var(--muted); }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.95rem;
+      min-width: 0;
+    }
+    .brand-logo-wrap {
+      width: 80px; height: 80px;
+      border-radius: 20px;
+      display: grid; place-items: center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.90));
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.35);
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+    .brand-logo { width: 72px; height: auto; }
+    .brand-copy strong { display:block; font-size: 1.08rem; letter-spacing: 0.02em; }
+    .brand-copy span { display:block; font-size: 0.93rem; color: var(--muted); }
+    .nav-links { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; color: var(--muted); }
     .nav-links a:hover { color:#fff; }
     .btn {
-      display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border-radius:999px;
-      padding:.95rem 1.2rem; border:1px solid transparent; font-weight:800; cursor:pointer;
-      transition:transform .15s ease;
+      display:inline-flex; align-items:center; justify-content:center; gap:0.5rem;
+      padding:0.95rem 1.2rem; border-radius:999px;
+      border:1px solid transparent; font-weight:800; cursor:pointer;
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      font: inherit;
     }
-    .btn:hover { transform:translateY(-1px); }
-    .btn-primary { background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#221307; box-shadow:0 14px 34px rgba(240,125,0,.28); }
-    .btn-secondary { background:rgba(255,255,255,.03); color:#fff; border-color:rgba(255,255,255,.14); }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      color:#2b1704;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 14px 34px rgba(240,112,0,0.26);
+    }
+    .btn-secondary {
+      color:#fff; border-color: rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.03);
+    }
     .eyebrow {
-      display:inline-flex; align-items:center; padding:.45rem .8rem; border-radius:999px;
-      font-size:.82rem; text-transform:uppercase; letter-spacing:.05em; color:#ffd9ae;
-      background:rgba(240,125,0,.1); border:1px solid rgba(240,125,0,.2); font-weight:800;
+      display:inline-flex; align-items:center; gap:0.5rem;
+      border-radius:999px; padding:0.48rem 0.85rem;
+      color:#ffd8ae; border:1px solid rgba(240,112,0,0.22);
+      background: rgba(240,112,0,0.10);
+      text-transform: uppercase; font-size:0.82rem; font-weight:800; letter-spacing:0.05em;
     }
-    h1,h2,h3,h4,p { margin-top:0; }
-    h1 { font-size:clamp(2.35rem,5vw,4.7rem); line-height:1.02; margin-bottom:1rem; letter-spacing:-.04em; }
-    h2 { font-size:clamp(1.7rem,3vw,2.7rem); line-height:1.08; margin-bottom:.8rem; }
-    h3 { font-size:1.15rem; margin-bottom:.55rem; }
-    p { color:var(--muted); }
-    .hero { padding:4.7rem 0 2.2rem; }
-    .hero-grid,.grid-2,.grid-3,.grid-4,.reviews-grid,.faq-grid,.code-grid {
-      display:grid; gap:1rem;
+    h1,h2,h3,h4,p { margin-top: 0; }
+    h1 {
+      font-size: clamp(2.45rem, 5vw, 4.8rem);
+      line-height: 1.02; margin-bottom: 1rem; letter-spacing: -0.045em;
     }
-    .hero-grid { grid-template-columns:1.15fr .85fr; }
-    .grid-2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .grid-3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
-    .grid-4,.reviews-grid,.code-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
-    .faq-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .panel,.hero-copy,.hero-card,.faq-item,.review-card {
-      background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.02));
-      border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:1.25rem;
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.08; margin-bottom: 0.8rem;
+      letter-spacing: -0.03em;
     }
-    .hero-card {
-      background:radial-gradient(circle at top right,rgba(240,125,0,.22),transparent 36%),linear-gradient(180deg,#171c23,#10141a);
+    h3 { font-size: 1.12rem; margin-bottom: 0.6rem; }
+    p { color: var(--muted); }
+    section { padding: 1.25rem 0 2rem; }
+    .hero { padding: 4.4rem 0 2.3rem; }
+    .hero-grid, .grid-2, .grid-3, .grid-4, .reviews-grid, .faq-grid, .diagnostic-grid {
+      display: grid; gap: 1rem;
     }
-    .actions,.chip-row,.footer-links {
-      display:flex; flex-wrap:wrap; gap:.7rem;
+    .hero-grid { grid-template-columns: 1.08fr 0.92fr; align-items: stretch; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4, .reviews-grid, .diagnostic-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.026));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.25rem;
     }
-    .actions { margin-top:1.4rem; }
-    .stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.9rem; margin-top:1.5rem; }
+    .hero-copy {
+      background:
+        radial-gradient(circle at top right, rgba(240,112,0,0.13), transparent 36%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+    }
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top right, rgba(255,155,45,0.28), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+    .logo-stage {
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,0.95), rgba(252,252,252,0.90)),
+        #fff;
+      border: 1px solid rgba(255,255,255,0.55);
+      padding: 1rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 18px 34px rgba(0,0,0,0.18);
+      margin-bottom: 1rem;
+    }
+    .logo-stage img { width: 100%; height: auto; }
+    .hero-points {
+      display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.85rem;
+    }
+    .point {
+      padding: 0.95rem;
+      background: rgba(255,255,255,0.035);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+    }
+    .point strong { display:block; color:#fff; }
+    .actions, .chips, .footer-links {
+      display:flex; flex-wrap: wrap; gap: 0.7rem;
+    }
+    .actions { margin-top: 1.35rem; }
+    .stats {
+      display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0.9rem; margin-top: 1.45rem;
+    }
     .stat {
-      padding:1rem; border-radius:18px; border:1px solid rgba(255,255,255,.06); background:rgba(255,255,255,.03);
+      border-radius: 18px;
+      padding: 1rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
     }
-    .stat strong { display:block; color:#fff; }
-    section { padding:1.2rem 0 1.95rem; }
-    .section-head { display:flex; align-items:end; justify-content:space-between; gap:1rem; margin-bottom:1rem; }
+    .stat strong { display:block; color:#fff; margin-bottom:0.25rem; }
+    .section-head {
+      display:flex; align-items:end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem;
+    }
     .card-icon {
-      width:44px; height:44px; border-radius:14px; display:grid; place-items:center;
-      background:rgba(240,125,0,.1); border:1px solid rgba(240,125,0,.18); color:var(--accent2);
-      margin-bottom:.75rem; font-size:1.2rem;
+      width: 46px; height:46px; display:grid; place-items:center;
+      border-radius: 14px; margin-bottom: 0.75rem;
+      background: rgba(240,112,0,0.10); color: var(--accent-3);
+      border:1px solid rgba(240,112,0,0.18); font-size:1.15rem;
     }
-    label { display:grid; gap:.35rem; color:var(--muted); font-size:.92rem; }
-    input,select,textarea {
-      width:100%; padding:.95rem 1rem; border-radius:16px; color:#fff;
-      background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); outline:none; font:inherit;
+    .service-card, .review-card, .faq-item, .diag-card { height:100%; }
+    .reputation-banner {
+      display:grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1rem;
     }
-    textarea { resize:vertical; }
-    input::placeholder,textarea::placeholder { color:#96a0ad; }
-    .form-grid,.stack { display:grid; gap:.85rem; }
-    .form-grid.two { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .hours,.list { list-style:none; padding:0; margin:1rem 0 0; display:grid; gap:.75rem; }
-    .hours li,.list li {
-      display:flex; justify-content:space-between; gap:1rem; padding-bottom:.75rem; border-bottom:1px solid var(--line);
+    .badge-card {
+      padding: 1rem; border-radius: 20px; background: rgba(255,255,255,0.03); border: 1px solid var(--line);
     }
-    .hours li:last-child,.list li:last-child { border-bottom:0; padding-bottom:0; }
+    .badge-card strong { display:block; font-size:1.2rem; color:#fff; }
+    .badge-card span { color: var(--muted); font-size: 0.95rem; }
+    .review-summary {
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;
+      border:1px solid var(--line); border-radius:20px; padding:1rem; margin-bottom:1rem;
+      background: rgba(255,255,255,0.03);
+    }
+    .muted-note { color: var(--muted); font-size: 0.95rem; }
+    .stars { color:#ffcf72; letter-spacing:0.08em; margin-bottom:0.65rem; }
+    .review-card small { display:block; color: var(--muted); margin-top: 0.75rem; }
     .chat-log {
-      min-height:260px; max-height:430px; overflow:auto; border-radius:18px;
-      border:1px solid var(--line); background:rgba(0,0,0,.18); padding:1rem; display:grid; gap:.8rem;
+      min-height: 270px; max-height: 460px; overflow:auto;
+      border-radius: 18px; border:1px solid var(--line);
+      background: rgba(0,0,0,0.18); padding: 1rem;
+      display:grid; gap:0.8rem;
     }
-    .bubble { padding:.9rem 1rem; border-radius:18px; max-width:92%; border:1px solid var(--line); }
-    .bubble.user { margin-left:auto; background:rgba(240,125,0,.12); }
-    .bubble.ai { background:rgba(255,255,255,.05); }
+    .bubble {
+      max-width: 92%; padding: 0.95rem 1rem; border-radius: 18px;
+      border: 1px solid var(--line);
+    }
+    .bubble.user { margin-left:auto; background: rgba(240,112,0,0.12); }
+    .bubble.ai { background: rgba(255,255,255,0.05); }
     .status {
-      display:none; border-radius:18px; padding:.95rem 1rem; margin-top:.9rem;
-      background:rgba(240,125,0,.08); border:1px solid rgba(240,125,0,.2); color:#ffd7b1;
+      display:none; margin-top:0.95rem; padding:1rem; border-radius:18px;
+      background: rgba(240,112,0,0.08); border:1px solid rgba(240,112,0,0.2); color:#ffd8ae;
     }
     .status.show { display:block; }
-    .stars { color:#ffcc69; letter-spacing:.08em; margin-bottom:.7rem; }
-    .review-card small { display:block; color:var(--muted); margin-top:.8rem; }
+    label { display:grid; gap:0.35rem; font-size:0.92rem; color: var(--muted); }
+    input, select, textarea {
+      width:100%; border-radius:16px; padding:0.95rem 1rem; font: inherit;
+      color:#fff; border:1px solid rgba(255,255,255,0.09); background: rgba(255,255,255,0.05);
+      outline:none;
+    }
+    input::placeholder, textarea::placeholder { color:#93a0b0; }
+    textarea { resize: vertical; }
+    .stack, .form-grid { display:grid; gap: 0.85rem; }
+    .form-grid.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .list, .hours {
+      list-style:none; padding:0; margin:1rem 0 0; display:grid; gap:0.8rem;
+    }
+    .list li, .hours li {
+      display:flex; justify-content:space-between; gap:1rem; padding-bottom:0.8rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .list li:last-child, .hours li:last-child { border-bottom:0; padding-bottom:0; }
+    .faq-item {
+      border:1px solid var(--line); border-radius: 20px; padding: 1rem; background: rgba(255,255,255,0.03);
+    }
     .faq-item summary { cursor:pointer; font-weight:800; }
-    .faq-item p { margin-top:.7rem; margin-bottom:0; }
-    .map {
-      min-height:220px; border-radius:18px; border:1px solid var(--line); display:grid; place-items:center; text-align:center;
-      padding:1rem; color:var(--muted); background:linear-gradient(rgba(16,20,26,.68),rgba(16,20,26,.78)),radial-gradient(circle at top right,rgba(240,125,0,.25),transparent 40%),#131922; margin-top:1rem;
+    .faq-item p { margin-top: 0.7rem; margin-bottom: 0; }
+    .diag-card { display:flex; flex-direction:column; }
+    .diag-card ul { margin: 0.25rem 0 0; padding-left: 1rem; color: var(--muted); }
+    .diag-card li { margin-bottom: 0.35rem; }
+    .map-card {
+      min-height: 240px; border-radius: 20px; display:grid; place-items:center; text-align:center; padding:1rem;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(rgba(17,24,33,0.76), rgba(17,24,33,0.84)),
+        radial-gradient(circle at top right, rgba(240,112,0,0.24), transparent 40%),
+        #151b24;
     }
-    .chip {
-      border-radius:999px; padding:.4rem .7rem; background:rgba(255,255,255,.04); border:1px solid var(--line); color:var(--muted); font-size:.84rem;
-    }
-    .review-summary {
-      display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1rem;
-      padding:1rem; border:1px solid var(--line); border-radius:18px; background:rgba(255,255,255,.03);
-    }
-    .muted-note { color:var(--muted); font-size:.95rem; }
     .floating-chris {
-      position:fixed; right:18px; bottom:18px; z-index:60; width:68px; height:68px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.15); background:linear-gradient(135deg,var(--accent),var(--accent2));
-      color:#241406; box-shadow:var(--shadow); font-weight:900; cursor:pointer;
+      position: fixed; right: 18px; bottom: 18px; z-index: 1001;
+      width: 72px; height: 72px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#241305; font-weight:900; box-shadow: var(--shadow); cursor:pointer;
     }
     footer {
-      padding:1rem 0 2.4rem; border-top:1px solid var(--line); margin-top:1rem; background:rgba(255,255,255,.02);
+      margin-top: 1rem; padding: 1.1rem 0 2.4rem;
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid var(--line);
     }
     .footer-row {
       display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem;
     }
-    @media (max-width:980px) {
-      .hero-grid,.grid-3,.grid-4,.reviews-grid,.faq-grid,.code-grid { grid-template-columns:1fr 1fr; }
-      .stats { grid-template-columns:1fr; }
+    @media (max-width: 1040px) {
+      .hero-grid, .grid-4, .reviews-grid, .faq-grid, .diagnostic-grid, .reputation-banner { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: 1fr; }
     }
-    @media (max-width:760px) {
-      .nav { flex-direction:column; align-items:flex-start; padding:.8rem 0; }
-      .nav-links,.grid-2,.grid-3,.grid-4,.reviews-grid,.faq-grid,.code-grid,.form-grid.two,.hero-grid { grid-template-columns:1fr; display:grid; }
-      .hero { padding-top:2.6rem; }
-      .brand-logo { width:62px; height:62px; }
+    @media (max-width: 760px) {
+      .nav { flex-direction:column; align-items:flex-start; padding:0.75rem 0; }
+      .hero { padding-top: 2.7rem; }
+      .hero-grid, .grid-2, .grid-3, .grid-4, .reviews-grid, .faq-grid, .diagnostic-grid, .reputation-banner, .form-grid.two, .hero-points {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { display:grid; grid-template-columns: 1fr 1fr; width:100%; }
+      .brand-logo-wrap { width: 70px; height: 70px; }
+      .brand-logo { width: 62px; }
     }
   </style>
 </head>
 <body>
   <div class="topbar">
     <div class="container nav">
-      <a class="brand" href="#top">
-        <img class="brand-logo" src="data:image/webp;base64,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" alt="Anything Automotive LLC logo" />
+      <a class="brand" href="#top" aria-label="Anything Automotive LLC home">
+        <div class="brand-logo-wrap">
+          <img class="brand-logo" src="/AA_Logo.png" alt="Anything Automotive LLC orange truck logo" />
+        </div>
         <div class="brand-copy">
           <strong>Anything Automotive LLC</strong>
-          <span>Rural Valley, Pennsylvania</span>
+          <span>201 Cowanshannock Ave • Rural Valley, PA 16249</span>
         </div>
       </a>
-      <div class="nav-links">
+      <nav class="nav-links" aria-label="Primary navigation">
         <a href="#services">Services</a>
-        <a href="#ask-chris">Ask Chris</a>
         <a href="#reviews">Reviews</a>
-        <a href="#schedule">Schedule</a>
+        <a href="#ask-chris">Ask Chris</a>
+        <a href="#schedule">Request Service</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
-        <a class="btn btn-primary" href="#schedule">Request Service</a>
-      </div>
+        <a class="btn btn-primary" href="#schedule">Schedule Service</a>
+      </nav>
     </div>
   </div>
 
@@ -176,25 +321,50 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow">Family-Owned Auto Repair • Rural Valley, PA</div>
-          <h1>Trusted repair work with clear answers and straightforward service.</h1>
-          <p>Anything Automotive LLC is built around honest service, strong diagnostics, fair treatment, and practical repair work that helps customers stay safe and keep moving.</p>
-          <p>Whether you need routine maintenance, brake work, inspection-related service, or help tracking down a problem others could not solve, the goal is simple: helpful answers and quality work.</p>
+          <div class="eyebrow">Family-owned auto repair in Rural Valley, Pennsylvania</div>
+          <h1>Honest answers, quality repairs, and practical service you can trust.</h1>
+          <p>Anything Automotive LLC provides a full range of consumer auto repair services, from routine maintenance and inspections to diagnostics, steering and suspension concerns, brake work, engine repairs, transmission replacements, and more.</p>
+          <p>Customers consistently highlight Chris for being knowledgeable, upfront, honest about pricing and diagnostics, and willing to help when a vehicle needs fast attention. The shop is known for straightforward communication and dependable work.</p>
           <div class="actions">
-            <a class="btn btn-primary" href="#schedule">Schedule Service</a>
+            <a class="btn btn-primary" href="#schedule">Request Service</a>
             <a class="btn btn-secondary" href="#ask-chris">Ask Chris</a>
           </div>
           <div class="stats">
-            <div class="stat"><strong>Diagnostics</strong><span>Practical troubleshooting for hard-to-pin-down problems.</span></div>
-            <div class="stat"><strong>Customer-First</strong><span>Straight communication and sensible next steps.</span></div>
-            <div class="stat"><strong>Local Service</strong><span>Family-owned repair support for the Rural Valley area.</span></div>
+            <div class="stat">
+              <strong>4.9 ★ on Google</strong>
+              <span>Based on 49 public Google reviews.</span>
+            </div>
+            <div class="stat">
+              <strong>5.0 ★ on Facebook</strong>
+              <span>Perfect score across 9 official votes with 100% recommendation status.</span>
+            </div>
+            <div class="stat">
+              <strong>Local reputation</strong>
+              <span>Recognized in the community and noted in Leader Times Best of the Best auto repair coverage.</span>
+            </div>
           </div>
         </div>
-        <aside class="hero-card">
-          <div>
-            <div class="eyebrow">Hours & Quick Info</div>
-            <h3>Ready for everyday service and harder-to-find answers.</h3>
-            <p>Use the website for service requests, quick questions, live Google reviews, and direct follow-up when something needs more personal attention.</p>
+        <aside class="hero-visual">
+          <div class="logo-stage">
+            <img src="/AA_Logo.png" alt="Anything Automotive LLC logo with orange truck and wordmark" />
+          </div>
+          <div class="hero-points">
+            <div class="point">
+              <strong>Hours</strong>
+              <span>Monday–Friday • 9:00 AM–6:00 PM</span>
+            </div>
+            <div class="point">
+              <strong>Inspections</strong>
+              <span>PA state inspections, including motorcycles and annual trailers.</span>
+            </div>
+            <div class="point">
+              <strong>Best fit</strong>
+              <span>Consumer vehicles from small cars to medium-duty trucks.</span>
+            </div>
+            <div class="point">
+              <strong>Not serviced</strong>
+              <span>Large big-rig commercial trucks and heavy industrial trailers.</span>
+            </div>
           </div>
           <ul class="hours" id="hoursList">
             <li><span>Monday</span><strong>9:00 AM – 6:00 PM</strong></li>
@@ -202,81 +372,68 @@
             <li><span>Wednesday</span><strong>9:00 AM – 6:00 PM</strong></li>
             <li><span>Thursday</span><strong>9:00 AM – 6:00 PM</strong></li>
             <li><span>Friday</span><strong>9:00 AM – 6:00 PM</strong></li>
-            <li><span>Saturday</span><strong>By appointment</strong></li>
+            <li><span>Saturday</span><strong>Closed</strong></li>
             <li><span>Sunday</span><strong>Closed</strong></li>
           </ul>
-          <div class="chip-row" style="margin-top:1rem;">
-            <span class="chip">Diagnostics</span>
-            <span class="chip">Maintenance</span>
-            <span class="chip">Inspections</span>
-            <span class="chip">Repairs</span>
-          </div>
         </aside>
+      </div>
+    </section>
+
+    <section aria-label="Reputation summary">
+      <div class="container reputation-banner">
+        <div class="badge-card">
+          <strong>Google reviews</strong>
+          <span>Publicly listed at 4.9 out of 5 stars across 49 customer reviews.</span>
+        </div>
+        <div class="badge-card">
+          <strong>Facebook community</strong>
+          <span>5 out of 5 stars, 9 official votes, and a strong community following.</span>
+        </div>
+        <div class="badge-card">
+          <strong>Customer praise</strong>
+          <span>Reviews repeatedly mention Chris for honesty, same-day help, and clear diagnostic guidance.</span>
+        </div>
       </div>
     </section>
 
     <section id="services">
       <div class="container">
-        <div class="section-head"><div><h2>Services</h2><p>Clear, customer-facing service categories for the public launch.</p></div></div>
-        <div class="grid-4">
-          <article class="panel"><div class="card-icon">🔍</div><h3>Diagnostics</h3><p>Warning lights, drivability issues, electrical concerns, intermittent problems, and hard-to-find faults.</p></article>
-          <article class="panel"><div class="card-icon">🛢️</div><h3>Maintenance</h3><p>Oil changes, filters, fluids, and general preventive service.</p></article>
-          <article class="panel"><div class="card-icon">🛑</div><h3>Brakes & Safety</h3><p>Brake inspections, wear concerns, noise, pulsation, and safety-focused checks.</p></article>
-          <article class="panel"><div class="card-icon">🛞</div><h3>Steering & Suspension</h3><p>Vibration, pulling, worn front-end parts, ride concerns, and handling-related repairs.</p></article>
-          <article class="panel"><div class="card-icon">🚗</div><h3>General Repair</h3><p>Everyday automotive repair work with an emphasis on reliability and doing it right.</p></article>
-          <article class="panel"><div class="card-icon">📋</div><h3>Inspection Appointments</h3><p>Inspection-related scheduling and clear communication when repairs are needed.</p></article>
-          <article class="panel"><div class="card-icon">💡</div><h3>Check Engine Light</h3><p>Testing and evaluation before parts are recommended or replaced.</p></article>
-          <article class="panel"><div class="card-icon">💬</div><h3>Ask Chris</h3><p>Start online with a first-pass answer, then send the question directly to Chris if you need more help.</p></article>
+        <div class="section-head">
+          <div>
+            <h2>Services</h2>
+            <p>Public-facing service information based on the verified business profile and current shop capabilities.</p>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section id="ask-chris">
-      <div class="container">
-        <div class="section-head"><div><h2>Ask Chris</h2><p>Chris is your digital mechanic assistant. Ask a question online and get a practical first-pass answer. If the issue needs direct review, you can send it straight to Chris.</p></div></div>
-        <div class="panel">
-          <div class="chat-log" id="chatLog">
-            <div class="bubble ai"><strong>Chris, your digital mechanic</strong><br><br>Describe the concern in plain language. You will get a practical first-pass answer and clear next steps.</div>
-          </div>
-          <form id="askChrisForm" class="stack" style="margin-top:1rem">
-            <div class="form-grid two">
-              <label>Your name<input id="askChrisName" placeholder="Your name" /></label>
-              <label>Email or phone<input id="askChrisReply" placeholder="How the shop can reach you" /></label>
-            </div>
-            <label>Your question<textarea id="askChrisQuestion" rows="5" placeholder="Example: My truck has a vibration around 60 mph and sometimes pulls to one side. What should I have checked first?" required></textarea></label>
-            <button class="btn btn-primary" type="submit">Get an answer</button>
-          </form>
-          <div class="actions" id="responseActions" style="display:none;margin-top:1rem">
-            <button id="helpfulBtn" class="btn btn-secondary" type="button">That helped</button>
-            <button id="anotherBtn" class="btn btn-secondary" type="button">Ask another question</button>
-            <button id="escalateBtn" class="btn btn-primary" type="button">Send to Chris</button>
-          </div>
-          <div id="askChrisStatus" class="status"></div>
-          <div id="escalationPanel" class="status">
-            <h3>Send this to Chris</h3>
-            <form id="escalationForm" class="stack">
-              <div class="form-grid two">
-                <label>Your name<input name="name" required /></label>
-                <label>Best contact<input name="contact" required /></label>
-              </div>
-              <label>Question for follow-up<textarea id="escalationQuestion" rows="4" required></textarea></label>
-              <label>Additional notes<textarea name="notes" rows="3" placeholder="Anything else Chris should know before following up?"></textarea></label>
-              <button class="btn btn-primary" type="submit">Request direct follow-up</button>
-            </form>
-            <div id="escalationStatus" class="status"></div>
-          </div>
+        <div class="grid-4">
+          <article class="panel service-card"><div class="card-icon">🔍</div><h3>Diagnostics</h3><p>Engine diagnostics, drivability concerns, warning lights, electrical concerns, and problem-solving for issues that need real testing before parts are recommended.</p></article>
+          <article class="panel service-card"><div class="card-icon">📐</div><h3>Digital Alignments</h3><p>Digital alignments, steering angle correction, and suspension-related evaluation for pulling, poor tire wear, and handling issues.</p></article>
+          <article class="panel service-card"><div class="card-icon">🛞</div><h3>Tires</h3><p>Tire mounting, balancing, tire-related vibration checks, and support for everyday passenger vehicles and medium-duty trucks.</p></article>
+          <article class="panel service-card"><div class="card-icon">🛢️</div><h3>Maintenance</h3><p>Oil changes, filters, fluid service, and general upkeep designed to help customers stay ahead of larger repair issues.</p></article>
+          <article class="panel service-card"><div class="card-icon">❄️</div><h3>A/C Service</h3><p>A/C system service and related repair work to restore cooling performance and comfort.</p></article>
+          <article class="panel service-card"><div class="card-icon">🛑</div><h3>Brakes & Brake Lines</h3><p>Brake inspections, rotors, pads, hydraulic concerns, brake lines, and practical safety-focused brake repair.</p></article>
+          <article class="panel service-card"><div class="card-icon">⛽</div><h3>Fuel, Exhaust & Welding</h3><p>Fuel system service, exhaust repair, and structural welding where appropriate for supported vehicle types.</p></article>
+          <article class="panel service-card"><div class="card-icon">⚙️</div><h3>Engine & Transmission Work</h3><p>Engine repairs, transmission repairs, and total transmission replacements when a major repair is the right next step.</p></article>
+          <article class="panel service-card"><div class="card-icon">📋</div><h3>PA State Inspections</h3><p>Official Pennsylvania state inspections, including inspections for motorcycles and annual trailer inspections.</p></article>
+          <article class="panel service-card"><div class="card-icon">🚗</div><h3>General Mechanical Repair</h3><p>Complete repair support for a wide variety of consumer vehicles ranging from small sedans to medium-duty trucks.</p></article>
+          <article class="panel service-card"><div class="card-icon">💬</div><h3>Ask Chris</h3><p>Start with a practical online answer from Chris, the digital mechanic assistant, then elevate the question for direct follow-up if needed.</p></article>
+          <article class="panel service-card"><div class="card-icon">📞</div><h3>Customer Support</h3><p>Simple scheduling, question submission, review access, and direct contact options for customers who want clear next steps.</p></article>
         </div>
       </div>
     </section>
 
     <section id="reviews">
       <div class="container">
-        <div class="section-head"><div><h2>Google reviews</h2><p>See live Google review information here and leave a review directly on Google when the review link is available.</p></div></div>
+        <div class="section-head">
+          <div>
+            <h2>Reviews</h2>
+            <p>Live Google review data can appear here in real time once the Google listing connection is enabled in Vercel.</p>
+          </div>
+        </div>
         <div class="panel">
           <div class="review-summary">
             <div>
-              <strong id="reviewHeadline">Live Google reviews</strong>
-              <div class="muted-note" id="reviewSubhead">Connecting to the Google business listing.</div>
+              <strong id="reviewHeadline">Google review connection ready</strong>
+              <div class="muted-note" id="reviewSubhead">Add the Google Maps Platform environment variables to display live review data and live listing hours.</div>
             </div>
             <div class="actions">
               <a id="googleReviewLink" class="btn btn-primary" href="#" target="_blank" rel="noopener" style="display:none;">Leave a Google review</a>
@@ -284,7 +441,69 @@
             </div>
           </div>
           <div id="reviewsGrid" class="reviews-grid">
-            <article class="review-card"><div class="stars">★★★★★</div><p>Live Google reviews will load here after the Google listing connection is configured.</p><small>Review feed</small></article>
+            <article class="panel review-card">
+              <div class="stars">★★★★★</div>
+              <p>Once the live Google connection is turned on, current public review text, rating counts, and listing details will load here automatically.</p>
+              <small>Google reviews feed</small>
+            </article>
+            <article class="panel review-card">
+              <div class="stars">★★★★★</div>
+              <p>Customers regularly praise Chris for honesty, strong diagnostic ability, fast turnaround when possible, and being upfront about what a vehicle truly needs.</p>
+              <small>Public review themes</small>
+            </article>
+            <article class="panel review-card">
+              <div class="stars">★★★★★</div>
+              <p>The live connection also supports a direct Google review button so customers can leave a public review on Google from the site.</p>
+              <small>Review action</small>
+            </article>
+            <article class="panel review-card">
+              <div class="stars">★★★★★</div>
+              <p>The website can show current Google listing hours too, which helps keep the public site synchronized with the business profile.</p>
+              <small>Hours sync</small>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ask-chris">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Ask Chris</h2>
+            <p>Chris is the digital mechanic assistant for Anything Automotive LLC. Ask a question in plain language. The system gives a practical first-pass answer and can be elevated for direct follow-up if needed.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="chat-log" id="chatLog">
+            <div class="bubble ai"><strong>Chris, your digital mechanic</strong><br><br>Tell me what the vehicle is doing, when the problem happens, whether any warning lights are on, and whether any recent repairs or parts were done. I will give you a practical starting point.</div>
+          </div>
+          <form id="askChrisForm" class="stack" style="margin-top:1rem;">
+            <div class="form-grid two">
+              <label>Your name<input id="askChrisName" placeholder="Your name" /></label>
+              <label>Email or phone<input id="askChrisReply" placeholder="Best way for the shop to reach you" /></label>
+            </div>
+            <label>Your question<textarea id="askChrisQuestion" rows="5" placeholder="Example: My SUV has a wobble around 55–65 mph and I hear a clicking noise during turns. The check engine light is also on. What should I check first?" required></textarea></label>
+            <button class="btn btn-primary" type="submit">Get an answer</button>
+          </form>
+          <div class="actions" id="responseActions" style="display:none; margin-top:1rem;">
+            <button class="btn btn-secondary" id="helpfulBtn" type="button">That helped</button>
+            <button class="btn btn-secondary" id="anotherBtn" type="button">Ask another question</button>
+            <button class="btn btn-primary" id="escalateBtn" type="button">Send to Chris</button>
+          </div>
+          <div class="status" id="askChrisStatus"></div>
+          <div class="status" id="escalationPanel">
+            <h3>Send this question for direct follow-up</h3>
+            <form id="escalationForm" class="stack">
+              <div class="form-grid two">
+                <label>Your name<input name="name" required /></label>
+                <label>Best contact<input name="contact" required /></label>
+              </div>
+              <label>Question<textarea id="escalationQuestion" rows="4" required></textarea></label>
+              <label>Additional notes<textarea name="notes" rows="3" placeholder="Anything else Chris should know before following up?"></textarea></label>
+              <button class="btn btn-primary" type="submit">Request direct follow-up</button>
+            </form>
+            <div class="status" id="escalationStatus"></div>
           </div>
         </div>
       </div>
@@ -292,56 +511,142 @@
 
     <section id="schedule">
       <div class="container">
-        <div class="section-head"><div><h2>Request service</h2><p>Send a service request online and the shop can confirm the best appointment window.</p></div></div>
+        <div class="section-head">
+          <div>
+            <h2>Request service</h2>
+            <p>Send the details online and the shop can follow up with the best next step or appointment window.</p>
+          </div>
+        </div>
         <div class="grid-2">
           <div class="panel">
             <form id="scheduleForm" class="stack">
               <div class="form-grid two">
-                <label>Full name<input name="name" placeholder="Your name" required></label>
-                <label>Phone number<input name="phone" placeholder="Best call-back number" required></label>
+                <label>Full name<input name="name" placeholder="Your name" required /></label>
+                <label>Phone number<input name="phone" placeholder="Best callback number" required /></label>
               </div>
               <div class="form-grid two">
-                <label>Vehicle<input name="vehicle" placeholder="Year, make, model" required></label>
-                <label>Service requested<select name="service" required><option value="">Choose a service</option><option>Diagnostics</option><option>Inspection</option><option>Brakes</option><option>Maintenance</option><option>Steering / Suspension</option><option>Other</option></select></label>
+                <label>Vehicle<input name="vehicle" placeholder="Year, make, model" required /></label>
+                <label>Service needed
+                  <select name="service" required>
+                    <option value="">Choose a service</option>
+                    <option>Diagnostics</option>
+                    <option>Digital alignment</option>
+                    <option>PA state inspection</option>
+                    <option>Brakes / brake lines</option>
+                    <option>Tires / mounting / balancing</option>
+                    <option>Oil change / maintenance</option>
+                    <option>A/C service</option>
+                    <option>Engine repair</option>
+                    <option>Transmission repair / replacement</option>
+                    <option>Other</option>
+                  </select>
+                </label>
               </div>
-              <label>Notes<textarea name="notes" rows="5" placeholder="Describe the concern, warning lights, noises, or anything the shop should know."></textarea></label>
+              <label>Service notes<textarea name="notes" rows="6" placeholder="Helpful details: when the problem happened, warning lights that are on, any recent repairs or replaced parts, noises, smells, vibration, and the best way to reach you."></textarea></label>
               <button class="btn btn-primary" type="submit">Send service request</button>
             </form>
-            <div id="scheduleStatus" class="status"></div>
+            <div class="status" id="scheduleStatus"></div>
           </div>
           <div class="panel">
             <h3>Helpful details to include</h3>
             <ul class="list">
-              <li><span>When the problem happened</span><strong>Cold / warm / highway / braking</strong></li>
-              <li><span>Any warning lights</span><strong>Helpful for diagnostics</strong></li>
-              <li><span>Recent repairs or parts</span><strong>Good context</strong></li>
-              <li><span>Best way to reach you</span><strong>Call or email</strong></li>
+              <li><span>When the problem happens</span><strong>Cold start, warm, highway speed, braking, turning, hills</strong></li>
+              <li><span>Warning lights</span><strong>Check engine, ABS, traction, battery, temperature</strong></li>
+              <li><span>Recent repairs or new parts</span><strong>Especially if the issue started afterward</strong></li>
+              <li><span>Noises or symptoms</span><strong>Clicking, wobble, vibration, smoke, odor, hard start</strong></li>
+              <li><span>Best way to reach you</span><strong>Phone or email</strong></li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="codes">
+    <section id="diagnostics">
       <div class="container">
-        <div class="section-head"><div><h2>Common codes, symptoms, and diagnostics</h2><p>These examples give customers a simple starting point before scheduling a proper inspection.</p></div></div>
-        <div class="code-grid">
-          <article class="panel"><div class="card-icon">🧪</div><h3>P0101</h3><p>Mass air flow performance issues can affect drivability, fuel trims, idle quality, and acceleration. Testing is usually better than guessing parts.</p></article>
-          <article class="panel"><div class="card-icon">⛽</div><h3>P2022</h3><p>Fuel level sensor range or performance issues can affect gauge accuracy and fuel-system reporting. It may not be the root cause of another symptom, but it still needs attention.</p></article>
-          <article class="panel"><div class="card-icon">🛞</div><h3>Vibration, wobble, or clicking</h3><p>These symptoms can come from tires, front-end parts, brakes, wheel bearings, CV joints, or alignment-related issues. The speed and conditions matter.</p></article>
-          <article class="panel"><div class="card-icon">🚨</div><h3>Check engine light</h3><p>A code points in a direction, but proper testing is still needed before recommending parts or repairs.</p></article>
+        <div class="section-head">
+          <div>
+            <h2>Common codes, issues, and diagnostics</h2>
+            <p>These examples are meant to help customers understand what certain codes or symptoms may point toward before a proper inspection is scheduled.</p>
+          </div>
+        </div>
+        <div class="diagnostic-grid">
+          <article class="panel diag-card">
+            <div class="card-icon">🧪</div>
+            <h3>P0101</h3>
+            <p>Mass Air Flow Circuit Range/Performance Problem.</p>
+            <ul>
+              <li>May affect idle quality, drivability, and fuel trims.</li>
+              <li>Can be caused by intake leaks, sensor issues, contamination, or related airflow problems.</li>
+              <li>Testing is better than guessing parts.</li>
+            </ul>
+          </article>
+          <article class="panel diag-card">
+            <div class="card-icon">⛽</div>
+            <h3>P2022</h3>
+            <p>Fuel Level Sensor Circuit Range/Performance Problem.</p>
+            <ul>
+              <li>Can affect gauge accuracy and fuel-level reporting.</li>
+              <li>May not be the cause of another drivability symptom, but it still deserves attention.</li>
+              <li>Inspection helps confirm whether the fault is sensor, wiring, or module related.</li>
+            </ul>
+          </article>
+          <article class="panel diag-card">
+            <div class="card-icon">🛞</div>
+            <h3>Wobble, vibration, or clicking</h3>
+            <p>These symptoms often need condition-based troubleshooting.</p>
+            <ul>
+              <li>Possible causes include tires, balance, alignment, wheel bearings, CV joints, brake issues, or front-end parts.</li>
+              <li>Speed range and whether it happens while braking or turning matters.</li>
+              <li>A road test and physical inspection are often the best next step.</li>
+            </ul>
+          </article>
+          <article class="panel diag-card">
+            <div class="card-icon">🚨</div>
+            <h3>Check engine light</h3>
+            <p>A stored code gives direction, not automatic certainty.</p>
+            <ul>
+              <li>Some faults are minor; others can affect safety, fuel economy, or drivability.</li>
+              <li>A flashing light or severe misfire should be treated more urgently.</li>
+              <li>Ask Chris for a first pass, then schedule testing if needed.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="faq">
       <div class="container">
-        <div class="section-head"><div><h2>Frequently asked questions</h2><p>Sample questions with simple answers for first-time visitors.</p></div></div>
+        <div class="section-head">
+          <div>
+            <h2>Frequently asked questions</h2>
+            <p>Simple sample questions with straightforward answers for first-time visitors.</p>
+          </div>
+        </div>
         <div class="faq-grid">
-          <details class="faq-item" open><summary>My vehicle shakes at highway speed. What should I mention when I contact the shop?</summary><p>Include the speed range, whether it changes during braking or turning, and whether the steering wheel shakes or the whole vehicle vibrates.</p></details>
-          <details class="faq-item"><summary>If my check engine light is on, should I still drive it?</summary><p>If the light is flashing, the vehicle is running poorly, or the problem feels unsafe, limit driving and have it checked as soon as possible.</p></details>
-          <details class="faq-item"><summary>Can I ask a question before I schedule?</summary><p>Yes. Start with Ask Chris for a first-pass answer. If you still need direct help, you can send the question to Chris for follow-up.</p></details>
-          <details class="faq-item"><summary>What helps the shop diagnose a problem faster?</summary><p>Recent repairs, warning lights, when the issue happens, unusual noises, smells, temperature changes, and whether the problem is constant or intermittent.</p></details>
+          <details class="faq-item" open>
+            <summary>Do I need an appointment for diagnostics?</summary>
+            <p>It is best to request service first so the shop can plan the right amount of time and understand the problem before you arrive.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What should I tell the shop if my vehicle shakes on the highway?</summary>
+            <p>Share the speed range, whether it changes while braking or turning, and whether the shaking is in the steering wheel, seat, or whole vehicle.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I ask a question before I bring the vehicle in?</summary>
+            <p>Yes. Use Ask Chris for a first-pass answer. If you still need direct help, you can send the question to Chris for follow-up.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do you inspect motorcycles and trailers?</summary>
+            <p>Yes. The public business information indicates the shop is certified for Pennsylvania motorcycle inspections and annual trailer inspections.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What vehicles does the shop work on?</summary>
+            <p>The shop works on a wide variety of consumer vehicles from small sedans to medium-duty trucks, but not large big-rig heavy commercial trucks or heavy industrial trailers.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What helps the shop diagnose a problem faster?</summary>
+            <p>Warning lights, when the problem happens, what recent repairs were done, and any unusual noises, smells, smoke, or vibration all help.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -349,19 +654,24 @@
     <section id="contact">
       <div class="container grid-2">
         <div class="panel">
-          <h2>Contact Anything Automotive</h2>
+          <h2>Contact Anything Automotive LLC</h2>
           <ul class="list">
             <li><span>Address</span><strong>201 Cowanshannock Ave, Rural Valley, PA 16249</strong></li>
-            <li><span>Phone</span><strong>(724) 783-2008</strong></li>
-            <li><span>Email</span><strong>anythingautomotive2018@gmail.com</strong></li>
-            <li><span>Main next step</span><strong>Schedule service or Ask Chris</strong></li>
+            <li><span>Phone</span><strong><a href="tel:+17247832008">(724) 783-2008</a></strong></li>
+            <li><span>Main email</span><strong><a href="mailto:anythingautomotive2018@gmail.com">anythingautomotive2018@gmail.com</a></strong></li>
+            <li><span>Hours</span><strong>Monday–Friday, 9:00 AM–6:00 PM</strong></li>
           </ul>
-          <div class="map"><div><strong style="display:block;color:#fff;margin-bottom:.45rem">Map and directions area</strong><span>Ready for an embedded map or Google directions link.</span></div></div>
+          <div class="map-card" id="mapCard">
+            <div>
+              <strong style="display:block; color:#fff; margin-bottom:0.4rem;">Local shop. Community-centered service.</strong>
+              <span class="muted-note">Connect a Google Maps link or embedded map if you want this area to route customers directly.</span>
+            </div>
+          </div>
         </div>
         <div class="panel">
-          <h3>Local shop. Practical service.</h3>
-          <p>The public launch keeps the message centered on trust, service, useful answers, live Google reviews, and easy contact.</p>
-          <p>Chris handles first-pass online questions. When direct review is needed, the question can be sent straight to the shop.</p>
+          <h3>Why customers choose Anything Automotive</h3>
+          <p>Public reviews and social feedback point to the same core strengths: strong diagnostic thinking, straightforward communication, and a willingness to help customers understand what is actually going on with their vehicle.</p>
+          <p>The site is built to help customers do three simple things: understand the shop, request service, and get a helpful first answer through Ask Chris before deciding whether direct follow-up is needed.</p>
           <div class="actions">
             <a class="btn btn-primary" href="tel:+17247832008">Call the shop</a>
             <a class="btn btn-secondary" href="mailto:anythingautomotive2018@gmail.com">Email the shop</a>
@@ -379,23 +689,23 @@
       </div>
       <div class="footer-links">
         <a href="./privacy.html">Privacy Policy</a>
-        <a href="./terms.html">Terms</a>
+        <a href="./terms.html">Terms of Use</a>
         <a href="mailto:anythingautomotive2018@gmail.com">Contact</a>
       </div>
     </div>
   </footer>
 
-  <button class="floating-chris" type="button" id="floatingChrisBtn" aria-label="Open Ask Chris">Chris</button>
+  <button class="floating-chris" id="floatingChrisBtn" type="button" aria-label="Open Ask Chris">Chris</button>
 
   <script>
     function byId(id) { return document.getElementById(id); }
     function escapeHtml(value) {
       return String(value ?? '')
-        .replaceAll('&','&amp;')
-        .replaceAll('<','&lt;')
-        .replaceAll('>','&gt;')
-        .replaceAll('"','&quot;')
-        .replaceAll("'",'&#39;');
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
     }
     function showBox(id, message) {
       const el = byId(id);
@@ -415,81 +725,81 @@
       const config = window.AA_SITE_CONFIG || {};
       const endpoint = config.askChrisEndpoint || '/api/ask-chris';
       const response = await fetch(endpoint, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(payload)
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
-      if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
-      return await response.json();
-    }
-    async function loadGoogleBusiness() {
-      const config = window.AA_SITE_CONFIG || {};
-      const endpoint = config.googleReviewsEndpoint || '/api/google-reviews';
-      try {
-        const response = await fetch(endpoint);
-        if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
-        const data = await response.json();
-        renderGoogleBusiness(data);
-      } catch (error) {
-        byId('reviewHeadline').textContent = 'Google review connection not configured yet';
-        byId('reviewSubhead').textContent = 'Add the Google Maps Platform environment variables to show live reviews and listing hours here.';
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
       }
+      return await response.json();
     }
     function renderGoogleBusiness(data) {
       if (!data) return;
       const headline = byId('reviewHeadline');
       const subhead = byId('reviewSubhead');
       const grid = byId('reviewsGrid');
-      const leaveLink = byId('googleReviewLink');
+      const reviewLink = byId('googleReviewLink');
       const mapsLink = byId('googleMapsLink');
+      const hoursList = byId('hoursList');
+      const mapCard = byId('mapCard');
 
       if (data.rating) {
         headline.textContent = `${data.rating} ★ on Google`;
         subhead.textContent = `${data.userRatingCount || 0} Google ratings${data.formattedAddress ? ' • ' + data.formattedAddress : ''}`;
       } else {
-        headline.textContent = 'Live Google reviews';
+        headline.textContent = 'Live Google review feed';
         subhead.textContent = data.formattedAddress || 'Google business listing connected';
       }
 
       if (data.googleMapsUri) {
         mapsLink.href = data.googleMapsUri;
         mapsLink.style.display = 'inline-flex';
+        mapCard.innerHTML = `<div><strong style="display:block; color:#fff; margin-bottom:0.4rem;">Find us on Google Maps</strong><a class="btn btn-secondary" href="${escapeHtml(data.googleMapsUri)}" target="_blank" rel="noopener">Open directions</a></div>`;
       }
       if (data.reviewWriteUrl) {
-        leaveLink.href = data.reviewWriteUrl;
-        leaveLink.style.display = 'inline-flex';
-      } else if (data.googleMapsUri) {
-        leaveLink.href = data.googleMapsUri;
-        leaveLink.textContent = 'Leave a Google review';
-        leaveLink.style.display = 'inline-flex';
+        reviewLink.href = data.reviewWriteUrl;
+        reviewLink.style.display = 'inline-flex';
       }
 
       if (Array.isArray(data.weekdayDescriptions) && data.weekdayDescriptions.length) {
-        const list = byId('hoursList');
-        list.innerHTML = data.weekdayDescriptions.map(item => {
+        hoursList.innerHTML = data.weekdayDescriptions.map(item => {
           const parts = item.split(':');
           const day = parts.shift() || item;
-          const value = parts.join(':').trim() || '';
-          return `<li><span>${escapeHtml(day)}</span><strong>${escapeHtml(value || 'See Google')}</strong></li>`;
+          const value = parts.join(':').trim() || 'See Google';
+          return `<li><span>${escapeHtml(day)}</span><strong>${escapeHtml(value)}</strong></li>`;
         }).join('');
       }
 
       if (Array.isArray(data.reviews) && data.reviews.length) {
-        grid.innerHTML = data.reviews.map(review => `
-          <article class="review-card">
-            <div class="stars">${'★'.repeat(Math.max(0, Math.min(5, review.rating || 0)))}</div>
-            <p>${escapeHtml(review.text || 'No review text provided.')}</p>
-            <small>${escapeHtml(review.author || 'Google reviewer')}${review.relativeTimeDescription ? ' • ' + escapeHtml(review.relativeTimeDescription) : ''}</small>
-          </article>
-        `).join('');
-      } else {
-        grid.innerHTML = '<article class="review-card"><div class="stars">★★★★★</div><p>No Google review text is available yet for display.</p><small>Google reviews</small></article>';
+        grid.innerHTML = data.reviews.map(review => {
+          const starCount = Math.max(0, Math.min(5, Number(review.rating || 0)));
+          return `
+            <article class="panel review-card">
+              <div class="stars">${'★'.repeat(starCount)}</div>
+              <p>${escapeHtml(review.text || 'No review text was returned.')}</p>
+              <small>${escapeHtml(review.author || 'Google reviewer')}${review.relativeTimeDescription ? ' • ' + escapeHtml(review.relativeTimeDescription) : ''}</small>
+            </article>
+          `;
+        }).join('');
+      }
+    }
+    async function loadGoogleBusiness() {
+      const config = window.AA_SITE_CONFIG || {};
+      const endpoint = config.googleReviewsEndpoint || '/api/google-reviews';
+      try {
+        const response = await fetch(endpoint);
+        if (!response.ok) return;
+        const data = await response.json();
+        renderGoogleBusiness(data);
+      } catch (error) {
+        console.warn('Google listing data not available yet.');
       }
     }
 
     byId('yearNow').textContent = new Date().getFullYear();
     byId('floatingChrisBtn').addEventListener('click', function() {
-      byId('ask-chris').scrollIntoView({behavior:'smooth', block:'start'});
+      byId('ask-chris').scrollIntoView({ behavior: 'smooth', block: 'start' });
       byId('askChrisQuestion').focus();
     });
 
@@ -501,11 +811,11 @@
         `Name: ${data.get('name') || ''}\n` +
         `Phone: ${data.get('phone') || ''}\n` +
         `Vehicle: ${data.get('vehicle') || ''}\n` +
-        `Service requested: ${data.get('service') || ''}\n\n` +
+        `Requested service: ${data.get('service') || ''}\n\n` +
         `Notes:\n${data.get('notes') || ''}`
       );
       window.location.href = `mailto:anythingautomotive2018@gmail.com?subject=${subject}&body=${body}`;
-      showBox('scheduleStatus', 'Your email app should open with your service request. If it does not, please call the shop directly.');
+      showBox('scheduleStatus', 'Your email app should open with the service request prepared. If it does not, please call the shop at (724) 783-2008.');
       event.target.reset();
     });
 
@@ -515,28 +825,36 @@
       const name = (byId('askChrisName').value || '').trim();
       const replyTo = (byId('askChrisReply').value || '').trim();
       if (!question) return;
+
       appendChat('user', `${name ? `<strong>${escapeHtml(name)}:</strong><br>` : ''}${escapeHtml(question)}`);
       appendChat('ai', '<strong>Chris, your digital mechanic</strong><br><br>Thinking through that now...');
-      const last = byId('chatLog').lastElementChild;
+      const pendingBubble = byId('chatLog').lastElementChild;
+
       try {
-        const result = await requestAskChris({ question, name, replyTo, source:'website' });
-        last.innerHTML = `<strong>${escapeHtml(result.title || 'Ask Chris')}</strong><br><br>${escapeHtml(result.answer || 'No answer returned.')}`;
+        const result = await requestAskChris({ question, name, replyTo, source: 'website' });
+        const bullets = Array.isArray(result.bullets) && result.bullets.length
+          ? `<ul>${result.bullets.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
+          : '';
+        pendingBubble.innerHTML = `<strong>${escapeHtml(result.title || 'Ask Chris')}</strong><br><br>${escapeHtml(result.answer || '')}${bullets}`;
         byId('responseActions').style.display = 'flex';
         byId('escalationQuestion').value = question;
         if (result.shouldEscalate) {
-          showBox('askChrisStatus', 'This question would benefit from direct follow-up from Chris.');
+          showBox('askChrisStatus', 'This sounds like something that may benefit from direct follow-up or in-person inspection.');
         } else {
-          showBox('askChrisStatus', 'If you still need direct help, use the Send to Chris option.');
+          showBox('askChrisStatus', 'If you still want direct help after this answer, use the Send to Chris option below.');
         }
       } catch (error) {
-        last.innerHTML = '<strong>Chris, your digital mechanic</strong><br><br>I could not reach the live answer service right now. Please try again, request service, or send the question directly to Chris for follow-up.';
+        pendingBubble.innerHTML = '<strong>Chris, your digital mechanic</strong><br><br>I could not reach the live answer service right now. Please try again, request service, or send the question for direct follow-up.';
         byId('responseActions').style.display = 'flex';
+        byId('escalationQuestion').value = question;
+        showBox('askChrisStatus', 'The live AI response is unavailable at the moment, but you can still send the question directly.');
       }
+
       event.target.reset();
     });
 
     byId('helpfulBtn').addEventListener('click', function() {
-      showBox('askChrisStatus', 'Glad that helped. If you need service, use the request form below.');
+      showBox('askChrisStatus', 'Glad that helped. If you need service next, use the request form below.');
     });
     byId('anotherBtn').addEventListener('click', function() {
       byId('askChrisQuestion').focus();
@@ -544,12 +862,13 @@
     byId('escalateBtn').addEventListener('click', function() {
       const panel = byId('escalationPanel');
       panel.classList.add('show');
-      panel.scrollIntoView({behavior:'smooth', block:'start'});
+      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     byId('escalationForm').addEventListener('submit', function(event) {
       event.preventDefault();
       const form = new FormData(event.target);
-      const email = (window.AA_SITE_CONFIG && window.AA_SITE_CONFIG.escalationEmail) || 'askchris@anythingautomotivepa.com';
+      const config = window.AA_SITE_CONFIG || {};
+      const email = config.escalationEmail || 'askchris@anythingautomotivepa.com';
       const subject = encodeURIComponent('Ask Chris follow-up request');
       const body = encodeURIComponent(
         `Name: ${form.get('name') || ''}\n` +
@@ -558,7 +877,7 @@
         `Additional notes:\n${form.get('notes') || ''}`
       );
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-      showBox('escalationStatus', 'Your email app should open with a direct follow-up request to Chris.');
+      showBox('escalationStatus', 'Your email app should open with a follow-up request addressed to the Ask Chris contact email.');
       event.target.reset();
     });
 
